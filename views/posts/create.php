@@ -1,6 +1,8 @@
 <html> <head> 
         
-        <title>Create A Blog Post</title> </head>
+        <title>Create A Blog Post</title> 
+    </head>
+    
     <body>
         <p>Create a new post right here :D</p>
     <form action="" method="POST" class="w3-container" enctype="multipart/form-data">

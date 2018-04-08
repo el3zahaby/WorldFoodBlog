@@ -14,6 +14,7 @@ class Post {
         $this->content = $content;
         $this->image = $image;
     }
+
 //    Static belongs to the general class not to instance
     public static function all() {
         $list = [];
@@ -59,13 +60,13 @@ class Post {
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-         if (isset($_POST['image']) && $_POST['image'] != "") {
+        if (isset($_POST['image']) && $_POST['image'] != "") {
             $filteredImage = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-        
+
         $title = $filteredTitle;
         $content = $filteredContent;
-           $image = $filteredImage;
+        $image = $filteredImage;
         $req->execute();
 
 //upload Post image if it exists
@@ -76,11 +77,10 @@ class Post {
 
     public static function add() {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into post(title, content) values (:title, :content)");
+        $req = $db->prepare("Insert into post(title, content, image) values (:title, :content, :image)");
         $req->bindParam(':title', $title);
         $req->bindParam(':content', $content);
-//         $req->bindParam(':image', $image);
-
+        $req->bindParam(':image', $image);
 // set parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -88,16 +88,15 @@ class Post {
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-//       if (isset($_POST['image']) && $_POST['image'] != "") {
-//        $filteredImage = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_SPECIAL_CHARS);
-//      }
+
+
         $title = $filteredTitle;
+ 
         $content = $filteredContent;
-//   $image = $filteredImage;
+        $image = Post::uploadFile($title);;
         $req->execute();
 
 //upload post image
-        Post::uploadFile($title);
     }
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];
@@ -105,7 +104,7 @@ class Post {
 
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
-    public static function uploadFile(string $image) {
+    public static function uploadFile(string $imageFileName) {
 
         if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
@@ -123,7 +122,8 @@ class Post {
 
         $tempFile = $_FILES[self::InputKey]['tmp_name'];
         $path = "/Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/uploads/";
-        $destinationFile = $path . $image . '.jpeg';
+        $destinationFile = $path . $imageFileName . '.jpeg';
+        $imagePath = "uploads/" . $imageFileName . '.jpeg';
 
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
@@ -133,6 +133,7 @@ class Post {
         if (file_exists($tempFile)) {
             unlink($tempFile);
         }
+        return $imagePath;
     }
 
     public static function remove($id) {
