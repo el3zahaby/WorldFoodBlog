@@ -1,9 +1,9 @@
 <?php
 class PostController {
-    public function readAll() {
+    public function readAllPosts() {
       // we store all the posts in a variable
       $posts = Post::all();
-      require_once('views/posts/readAll.php');
+      require_once('views/posts/readAllPosts.php');
     }
 
     public function read() {
@@ -15,7 +15,7 @@ class PostController {
       try{
       // we use the given id to get the correct post
       $post = Post::find($_GET['id']);
-      require_once('views/posts/read.php');
+      require_once('views/posts/readPost.php');
       }
  catch (Exception $ex){
      return call('pages','error');
@@ -24,15 +24,15 @@ class PostController {
     public function create() {
       // we expect a url of form ?controller=posts&action=create
       // if it's a GET request display a blank form for creating a new post
-      // else it's a POST so add to the database and redirect to readAll action
+      // else it's a POST so add to the database and redirect to readAllPosts action
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
           require_once('views/posts/create.php');
       }
       else { 
-            Posts::add();
+            Post::add();
              
             $posts = Post::all(); //$posts is used within the view
-            require_once('views/posts/readAll.php');
+            require_once('views/posts/readAllPosts.php');
       }
       
     }
@@ -53,7 +53,7 @@ class PostController {
             Post::update($id);
                         
             $posts = Post::all();
-            require_once('views/posts/readAll.php');
+            require_once('views/posts/readAllPosts.php');
       }
       
     }
@@ -61,7 +61,7 @@ class PostController {
             Post::remove($_GET['id']);
             
             $posts = Post::all();
-            require_once('views/posts/readAll.php');
+            require_once('views/posts/readAllPosts.php');
       }
       
     }

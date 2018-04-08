@@ -76,10 +76,10 @@ class Post {
 
     public static function add() {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into post(title, content,image) values (:title, :content, :image)");
+        $req = $db->prepare("Insert into post(title, content) values (:title, :content)");
         $req->bindParam(':title', $title);
         $req->bindParam(':content', $content);
-         $req->bindParam(':image', $image);
+//         $req->bindParam(':image', $image);
 
 // set parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
@@ -88,28 +88,28 @@ class Post {
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-//        if (isset($_POST['image']) && $_POST['image'] != "") {
-//            $filteredImage = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_SPECIAL_CHARS);
-//        }
+//       if (isset($_POST['image']) && $_POST['image'] != "") {
+//        $filteredImage = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_SPECIAL_CHARS);
+//      }
         $title = $filteredTitle;
         $content = $filteredContent;
-//         $image = $filteredImage;
+//   $image = $filteredImage;
         $req->execute();
 
 //upload post image
-        Post::uploadFile($name);
+        Post::uploadFile($title);
     }
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];
-    const InputKey = 'myUploader';
+    const InputKey = 'image';
 
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
-    public static function uploadFile(string $name) {
+    public static function uploadFile(string $image) {
 
         if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
-            trigger_error("File Missing!");
+            trigger_error("Please upload an image for this post");
         }
 
         if ($_FILES[self::InputKey]['error'] > 0) {
@@ -118,12 +118,12 @@ class Post {
 
 
         if (!in_array($_FILES[self::InputKey]['type'], self::AllowedTypes)) {
-            trigger_error("Handle File Type Not Allowed: " . $_FILES[self::InputKey]['type']);
+            trigger_error("This File Type Not Allowed: " . $_FILES[self::InputKey]['type']);
         }
 
         $tempFile = $_FILES[self::InputKey]['tmp_name'];
         $path = "/Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/uploads/";
-        $destinationFile = $path . $name . '.jpeg';
+        $destinationFile = $path . $image . '.jpeg';
 
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
