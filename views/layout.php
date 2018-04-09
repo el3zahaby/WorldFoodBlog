@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Pangolin" >
 <link rel="stylesheet" href="views/css/styles.css">
-<title>Shopping Cart</title>
+
+<title>Layout</title>
   </head>
   <body>
     <header class="w3-container w3-gray">

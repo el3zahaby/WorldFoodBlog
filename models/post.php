@@ -86,8 +86,10 @@ class Post {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if (isset($_POST['content']) && $_POST['content'] != "") {
-            $filteredContent = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
+        $filteredContent  = $_POST['content']; }
+//        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        
 
 
         $title = $filteredTitle;
@@ -122,7 +124,7 @@ class Post {
         $tempFile = $_FILES[self::InputKey]['tmp_name'];
         $path = "/Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/uploads/";
         $destinationFile = $path . $imageFileName . '.jpeg';
-        $imagePath = "/uploads/" . $imageFileName . '.jpeg';
+        $imagePath = "uploads/" . $imageFileName . '.jpeg';
 
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
