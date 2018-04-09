@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>MVC Skeleton</title>
-    <h1>Helllooooo</h1>
+    
     </head>
     <body>
         <?php

@@ -91,7 +91,6 @@ class Post {
 
 
         $title = $filteredTitle;
- 
         $content = $filteredContent;
         $image = Post::uploadFile($title);;
         $req->execute();
@@ -123,7 +122,7 @@ class Post {
         $tempFile = $_FILES[self::InputKey]['tmp_name'];
         $path = "/Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/uploads/";
         $destinationFile = $path . $imageFileName . '.jpeg';
-        $imagePath = "uploads/" . $imageFileName . '.jpeg';
+        $imagePath = "/uploads/" . $imageFileName . '.jpeg';
 
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");

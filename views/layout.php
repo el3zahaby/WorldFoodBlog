@@ -11,10 +11,9 @@
   </head>
   <body>
     <header class="w3-container w3-gray">
-      <a href='/MVC_Skeleton'>Home</a>
-      <a href='?controller=product&action=readAll'>Products</a>
-      <a href='?controller=product&action=create'>Add Product</a>
-           <a href='?controller=post&action=readAllPosts'>List Posts</a>
+      <a href='/WorldFoodBlog'>Home</a>
+    
+           <a href='?controller=post&action=readAllPosts'>Recipes</a>
             <a href='?controller=post&action=create'>Create Post</a>
     </header>
 <div class="w3-container w3-pink">
