@@ -3,13 +3,7 @@
     <head>
         <script src=”http://js.nicedit.com/nicEdit-latest.js”></script>
         <script src="../css/nicEdit.js" type="text/javascript"></script>
-        <script>
-            bkLib.onDomLoaded(function()
-                    {
-                    new nicEditor().panelInstance(‘NicEdit’);
-                    new nicEditor().panelInstance(‘NicEdit2’);
-                    });
-        </script>
+ 
     </head>
 
     <body><p>Fill in the following form to create a new product:</p>
