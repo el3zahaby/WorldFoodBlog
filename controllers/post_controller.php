@@ -1,4 +1,5 @@
 <?php
+
 class PostController {
     public function readAllPosts() {
       // we store all the posts in a variable
@@ -15,7 +16,7 @@ class PostController {
       try{
       // we use the given id to get the correct post
       $post = Post::find($_GET['id']);
-      require_once('views/posts/readPost.php');
+      require_once('views/posts/read.php');
       }
  catch (Exception $ex){
      return call('pages','error');

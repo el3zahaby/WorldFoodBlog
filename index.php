@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>MVC Skeleton</title>
-    <h1>Helllooooo</h1>
+        <title>Blog Website</title>
+    
     </head>
     <body>
         <?php
@@ -17,7 +17,9 @@
         $action     = 'home';
   }
 
+  
     require_once('views/layout.php');
         ?>
+ 
     </body>
 </html>
