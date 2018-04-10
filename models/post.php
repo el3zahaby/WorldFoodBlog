@@ -168,6 +168,7 @@ if (empty($_FILES[self::InputKey])) {
     }
 
     public static function remove($id) {
+
         $db = Db::getInstance();
         //make sure $id is an integer
         $id = intval($id);
