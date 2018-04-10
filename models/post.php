@@ -138,6 +138,7 @@ class Post {
     }
 
     public static function remove($id) {
+
         $db = Db::getInstance();
         //make sure $id is an integer
         $id = intval($id);
