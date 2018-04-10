@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>MVC Skeleton</title>
+        <title>Blog Website</title>
     
     </head>
     <body>
@@ -20,6 +20,6 @@
   
     require_once('views/layout.php');
         ?>
-    
+ 
     </body>
 </html>

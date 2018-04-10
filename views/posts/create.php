@@ -11,13 +11,13 @@
             </div>
         <textarea name= "content" class="tinymce" id="texteditor"></textarea>
         
-        <input type="submit" value="Get Data">
+       
         <input type="hidden" 
                name="MAX_FILE_SIZE" 
                value="10000000"
                />
-        <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" required />
-        <p>
+        <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" required /> <br>
+      <input type="submit" value="Create Post">
     </form>
 
 </form

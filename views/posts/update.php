@@ -1,31 +1,44 @@
-<p>Fill in the following form to update an existing post:</p>
-<form action="" method="POST" class="w3-container" enctype="multipart/form-data">
-    <h2>Update Item</h2>
+
+<html> <head> 
+        
+        <title>Edit Blog Pos</title> </head>
+    <body>
+<p>Update post here</p>
+    <form id="get-data-form" method="POST"  class="w3-container" enctype="multipart/form-data">
+    <h2>Update Post</h2>
     <p>
-        <input class="w3-input" type="text" name="title" value="<?= $post->title; ?>">
+        <input class="form-group" type="text" name="title" value="<?= $post->title; ?>">
         <label>Title</label>
     </p>
     <p>
-        <input class="w3-input" type="text" name="content" value="<?= $post->content; ?>" >
-        <label>Post</label>
+        <textarea  class="tinymce" id="texteditor" type="text" name="content" value="<?= $post->content; ?>" ></textarea>
+        <label>Content</label>
     </p>
             
   <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
 <?php 
-$file = 'views/images/' . $post->title . '.jpeg';
-if(file_exists($file)){
+  $file = $post->image;
+if (file_exists($file)) {
     $img = "<img src='$file' width='150' />";
     echo $img;
+} else {
+    echo "<img src='views/images/standard/_noproductimage.png' width='150' />";
 }
-else
-{
-echo "<img src='views/images/standard/_nopostimage.png' width='150' />";
-}
-
 ?>
   <br/>
-  <input type="file" name="image" class="w3-btn w3-pink" />
-  <p>
-    <input class="w3-btn w3-gray" type="submit" value="Update Post">
-    </p>
+   <input type="hidden" 
+               name="MAX_FILE_SIZE" 
+               value="10000000"
+               />
+        <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" /> <br>
+      <input type="submit" value="Update Post">
 </form>
+
+<script src="views/Javascript/js/jquery.min.js" type="text/javascript"></script>
+    <script src="views/Javascript/plugin/tinymce/tinymce.min.js" type="text/javascript"></script>
+    <script src="views/Javascript/plugin/tinymce/init-tinymce.js" type="text/javascript"></script>
+
+    
+
+</body>
+</html>
