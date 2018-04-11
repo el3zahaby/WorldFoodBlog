@@ -9,6 +9,10 @@
         case 'pages':
             $controller = new PagesController();
         break;
+      case 'user':
+            $controller = new userController();
+        break;
+
 
         default:
         //for all data-driven pages use a specific Controller class
@@ -26,7 +30,8 @@
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
                     'product' => ['readAll','read','create','update','delete'],
-                    'controllerXXX' => ['actionYYY', 'actionZZZ'],
+                    'user' => ['register'],
+                  
                     );
 
   // check that the requested controller and action are both allowed

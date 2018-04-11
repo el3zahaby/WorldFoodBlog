@@ -1,18 +1,20 @@
 <?php
-class USER {
+class User {
 
- // we define 4 attributes
+ // we define attributes
     public $id;
-    public $uname;
-    public $upass;
-    public $umail;
+    public $username;
+    public $password;
+    public $email;
+    public $typeid;
+    public $create_date;
   
 
-    public function __construct($id, $uname, $upass, $umail, $typeid,$create_date ) {
+    public function __construct($id, $username, $password, $email, $typeid,$create_date ) {
       $this->id    = $id;
-      $this->name  = $uname;
-      $this->password = $upass;
-      $this->email = $umail;
+      $this->name  = $username;
+      $this->password = $password;
+      $this->email = $email;
       $this->typeid = $typeid;
       $this->create_date = $create_date;
     }
@@ -23,78 +25,43 @@ class USER {
       $req = $db->query('SELECT * FROM username');
       // we create a list of Product objects from the database results
       foreach($req->fetchAll() as $user) {
-        $list[] = new User ($user['id'], $username['username'], $typeid['typeid']);
+        $list[] = new User ($user['id'], $user['username'], $user['typeid']);
       }
       return $list;
     }
 
 
-    public function register($uname,$umail,$upass)
-    {
-       try
-       {
-           $new_password = password_hash($upass, PASSWORD_DEFAULT);
-   
-           $stmt = $this->db->prepare("INSERT INTO username(username,email,password) 
-                                                       VALUES(:uname, :umail, :upass)");
-              
-           $stmt->bindparam(":uname", $uname);
-           $stmt->bindparam(":umail", $umail);
-           $stmt->bindparam(":upass", $new_password);            
-           $stmt->execute(); 
-   
-           return $stmt; 
-       }
-       catch(PDOException $e)
-       {
-           echo $e->getMessage();
-       }    
-    }
- 
-    public function login($uname,$umail,$upass)
-    {
-       try
-       {
-          $stmt = $this->db->prepare("SELECT * FROM username WHERE username=:uname OR email=:umail LIMIT 1");
-          $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
-          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-          if($stmt->rowCount() > 0)
-          {
-             if(password_verify($upass, $userRow['password']))
-             {
-                $_SESSION['user_session'] = $userRow['id'];
-                return true;
-             }
-             else
-             {
-                return false;
-             }
-          }
-       }
-       catch(PDOException $e)
-       {
-           echo $e->getMessage();
-       }
-   }
- 
-   public function is_loggedin()
-   {
-      if(isset($_SESSION['user_session']))
-      {
-         return true;
-      }
-   }
- 
-   public function redirect($url)
-   {
-       header("Location: $url");
-   }
- 
-   public function logout()
-   {
-        session_destroy();
-        unset($_SESSION['user_session']);
-        return true;
-   }
+
+public static function add() {
+$db = Db::getInstance();
+$req = $db->prepare("Insert into username(username, email,password) values (:username, :email, :password)");
+
+$req->bindParam(':username', $username);
+$req->bindParam(':username', $email);
+$req->bindParam(':username', $passpword);
+
+
+
+// set parameters and execute
+if(isset($_POST['username'])&& $_POST['username']!=""){
+$filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
+
+}
+if(isset($_POST['email'])&& $_POST['email']!=""){
+$filteredEmail = filter_input(INPUT_POST,'email', FILTER_SANITIZE_SPECIAL_CHARS);
+}
+
+if(isset($_POST['password'])&& $_POST['password']!=""){
+$filteredPassword = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
+
+}
+
+
+$username = $filteredUsername;
+$email = $filteredEmail;
+$password = $filteredPassword;
+
+$req->execute();
+}
 }
 ?>
