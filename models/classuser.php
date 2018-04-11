@@ -37,8 +37,8 @@ $db = Db::getInstance();
 $req = $db->prepare("Insert into username(username, email,password) values (:username, :email, :password)");
 
 $req->bindParam(':username', $username);
-$req->bindParam(':username', $email);
-$req->bindParam(':username', $passpword);
+$req->bindParam(':email', $email);
+$req->bindParam(':password', $password);
 
 
 
