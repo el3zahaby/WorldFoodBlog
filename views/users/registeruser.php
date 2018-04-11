@@ -34,17 +34,17 @@
             }
             ?>
             <div class="form-group">
-            <input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
             </div>
             <div class="form-group">
-            <input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $umail;}?>" />
+            <input type="email" class="form-control" name="email" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $umail;}?>" />
             </div>
             <div class="form-group">
-             <input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
+             <input type="password" class="form-control" name="password" placeholder="Enter Password" />
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-             <button type="submit" class="btn btn-block btn-primary" name="btn-signup">
+             <button type="submit" class="btn btn-block btn-primary">
                  <i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
                 </button>
             </div>

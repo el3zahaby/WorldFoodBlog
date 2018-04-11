@@ -1,9 +1,9 @@
 <?php
 
 class UserController {
-    public function readAll (){
+    public function readAllUsers (){
         //we store all the users in a variable
-        $users = User:: all();
+        $users = User::allusers();
         require_once ('views/users/readallusers.php');
         
     }
@@ -15,12 +15,16 @@ public function register() {
 // else it's a POST so add to the database and redirect to readAll action
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 require_once('views/users/registeruser.php');
+
 }
 else { 
+
 User::add();
 
-$users = User::all(); //$products is used within the view
+echo "hi";
+$users = User::allusers(); //$products is used within the view
 require_once('views/users/readallusers.php');
+
 }
 
 }

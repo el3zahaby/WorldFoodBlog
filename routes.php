@@ -10,8 +10,8 @@
             $controller = new PagesController();
         break;
       case 'user':
-            $controller = new userController();
-        break;
+//            $controller = new userController();
+//        break;
 
 
         default:

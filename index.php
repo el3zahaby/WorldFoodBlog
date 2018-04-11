@@ -21,4 +21,5 @@
     require_once('views/layout.php');
         ?>
     </body>
+
 </html>

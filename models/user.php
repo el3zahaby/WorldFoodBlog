@@ -1,22 +1,22 @@
 <?php
-class User {
+    class User {
 
  // we define attributes
     public $id;
     public $username;
     public $password;
     public $email;
-    public $typeid;
-    public $create_date;
-  
+//    public $typeid;
+//    public $create_date;
+//  
 
-    public function __construct($id, $username, $password, $email, $typeid,$create_date ) {
+    public function __construct($id, $username, $password, $email) {
       $this->id    = $id;
       $this->name  = $username;
       $this->password = $password;
       $this->email = $email;
-      $this->typeid = $typeid;
-      $this->create_date = $create_date;
+//      $this->typeid = $typeid;
+//      $this->create_date = $create_date;
     }
     
     public static function allusers() {
@@ -25,7 +25,7 @@ class User {
       $req = $db->query('SELECT * FROM username');
       // we create a list of Product objects from the database results
       foreach($req->fetchAll() as $user) {
-        $list[] = new User ($user['id'], $user['username'], $user['typeid']);
+        $list[] = new User ($user['id'], $user['username'], $user['email'],$user['password']);
       }
       return $list;
     }
@@ -34,7 +34,7 @@ class User {
 
 public static function add() {
 $db = Db::getInstance();
-$req = $db->prepare("Insert into username(username, email,password) values (:username, :email, :password)");
+$req = $db->prepare("Insert into username(username, email , password) values (:username, :email, :password)");
 
 $req->bindParam(':username', $username);
 $req->bindParam(':email', $email);
