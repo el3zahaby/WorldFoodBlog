@@ -9,7 +9,9 @@ function call($controller, $action) {
         //for non-data-driven pages use the PagesController class
         case 'pages':
             $controller = new PagesController();
-            break;
+
+        break;
+
 
         default:
             //for all data-driven pages use a specific Controller class
@@ -26,10 +28,14 @@ function call($controller, $action) {
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
-    'product' => ['readAll', 'read', 'create', 'update', 'delete'],
+
+                    'product' => ['readAll','read','create','update','delete'],
+                    'user' => ['register'],
+    
     'post' => ['readAllPosts', 'read', 'create', 'delete', 'update'],
-    'controllerXXX' => ['actionYYY', 'actionZZZ'],
+    
 );
+
 
 // check that the requested controller and action are both allowed
 // if someone tries to access something else they will be redirected 

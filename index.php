@@ -2,10 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
         <title>Blog Website</title>
     
+
     </head>
     <body>
+        
         <?php
     require_once('connection.php');
         
@@ -22,4 +25,5 @@
         ?>
  
     </body>
+
 </html>
