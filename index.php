@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>MVC Skeleton</title>
-    <h1>World Food Blog</h1>
+
+        <title>Blog Website</title>
+    
+
     </head>
     <body>
         
@@ -18,8 +20,10 @@
         $action     = 'home';
   }
 
+  
     require_once('views/layout.php');
         ?>
+ 
     </body>
 
 </html>
