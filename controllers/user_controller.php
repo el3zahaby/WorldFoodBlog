@@ -38,10 +38,12 @@ else {
 User::login();
 
 
+require_once('views/index.php');
+}
+
 }
  }
- }
-
+ 
 
 
 

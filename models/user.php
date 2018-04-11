@@ -55,9 +55,9 @@ public static function login() {
     $db = Db::getInstance();
     session_start();
      $req = $db->prepare("SELECT * FROM username WHERE username=:username OR email=:email LIMIT 1");
-          $reg->execute(array(':username'=>$username, ':email'=>$email));
-          $userRow=$reg->fetch(PDO::FETCH_ASSOC);
-          if($reg->rowCount() > 0)
+          $req->execute(array(':username'=>$username, ':email'=>$email));
+          $userRow=$req->fetch(PDO::FETCH_ASSOC);
+          if($req->rowCount() > 0)
           {
              if(password_verify($password, $userRow['password']))
              {

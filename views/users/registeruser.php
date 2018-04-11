@@ -27,9 +27,7 @@
            // else if(isset($_GET['joined']))
             {
                  ?>
-                 <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='signin.php'>login</a> here
-                 </div>
+                
                  <?php
             }
             ?>
