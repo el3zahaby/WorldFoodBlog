@@ -106,7 +106,7 @@ class Post {
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
     public static function uploadFile(string $imageFileName) {
-if (empty($_FILES[self::InputKey])) {
+        if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
             trigger_error("Please upload an image for this post");
         }
@@ -133,7 +133,8 @@ if (empty($_FILES[self::InputKey])) {
         }
         return $imagePath;
     }
-    const AllowedTypess = ['image/jpeg', 'image/jpg',''];
+
+    const AllowedTypess = ['image/jpeg', 'image/jpg', ''];
     const InputKeys = 'image';
 
     public static function updateFile(string $imageFileName) {
@@ -158,7 +159,6 @@ if (empty($_FILES[self::InputKey])) {
         if (!move_uploaded_file($tempFile, $destinationFile)) {
 //            trigger_error("Handle Error");
             return $imagePath;
-            
         }
         //Clean up the temp file
         if (file_exists($tempFile)) {
@@ -168,14 +168,23 @@ if (empty($_FILES[self::InputKey])) {
     }
 
     public static function remove($id) {
-        $db = Db::getInstance();
-        //make sure $id is an integer
-        $id = intval($id);
-        $req = $db->prepare('delete FROM post WHERE id = :id');
-        // the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('id' => $id));
-    }
 
-}
+        try {
+            $db = Db::getInstance();
+            //make sure $id is an integer
+            $id = intval($idd);
+            $req = $db->prepare('delete FROM post WHERE id = :id');
+            // the query was prepared, now replace :id with the actual $id value
+            $req->execute(array('id' => $id));
+        
+        throw new Exception("whoops");}
+ catch (Exception $e) {
+            header("location:views/pages/error.php");
+
+            logException($e);
+        }
+   
+
+}}    
 
 ?>
