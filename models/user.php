@@ -2,21 +2,21 @@
 class User {
 
  // we define attributes
-    public $id;
+    //public $id;
     public $username;
     public $password;
     public $email;
-    public $typeid;
-    public $create_date;
+   // public $typeid;
+    //public $create_date;
   
 
-    public function __construct($id, $username, $password, $email, $typeid,$create_date ) {
-      $this->id    = $id;
-      $this->name  = $username;
+    public function __construct($username, $password, $email) {
+     // $this->id    = $id;
+      $this->username  = $username;
       $this->password = $password;
       $this->email = $email;
-      $this->typeid = $typeid;
-      $this->create_date = $create_date;
+      //$this->typeid = $typeid;
+      //$this->create_date = $create_date;
     }
     
     public static function allusers() {
@@ -25,7 +25,7 @@ class User {
       $req = $db->query('SELECT * FROM username');
       // we create a list of Product objects from the database results
       foreach($req->fetchAll() as $user) {
-        $list[] = new User ($user['id'], $user['username'], $user['typeid']);
+        $list[] = new User ($user['username'], $user['password'], $user['email']);
       }
       return $list;
     }

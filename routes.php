@@ -9,9 +9,7 @@
         case 'pages':
             $controller = new PagesController();
         break;
-      case 'user':
-            $controller = new userController();
-        break;
+      
 
 
         default:

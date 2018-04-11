@@ -3,7 +3,7 @@
 class UserController {
     public function readAll (){
         //we store all the users in a variable
-        $users = User:: all();
+        $users = User:: allusers();
         require_once ('views/users/readallusers.php');
         
     }
@@ -19,8 +19,8 @@ require_once('views/users/registeruser.php');
 else { 
 User::add();
 
-$users = User::all(); //$products is used within the view
-require_once('views/users/readallusers.php');
+$users = User::allusers(); //$products is used within the view
+require_once('views/users/signinuser.php');
 }
 
 }

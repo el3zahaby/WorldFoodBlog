@@ -24,7 +24,7 @@
                   <?php
                }
             }
-            else if(isset($_GET['joined']))
+           // else if(isset($_GET['joined']))
             {
                  ?>
                  <div class="alert alert-info">
@@ -34,13 +34,13 @@
             }
             ?>
             <div class="form-group">
-            <input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php if(isset($error)){echo $username;}?>" />
             </div>
             <div class="form-group">
-            <input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $umail;}?>" />
+            <input type="text" class="form-control" name="email" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $email;}?>" />
             </div>
             <div class="form-group">
-             <input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
+             <input type="password" class="form-control" name="password" placeholder="Enter Password" />
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
@@ -49,7 +49,7 @@
                 </button>
             </div>
             <br />
-            <label>have an account ! <a href="signin.php">Sign In</a></label>
+            <!--<label>have an account ! <a href="signinuser.php">Sign In</a></label>-->
         </form>
        </div>
 </div>
