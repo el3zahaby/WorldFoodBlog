@@ -1,4 +1,7 @@
 <?php
+require_once('models/Exception.php');
+use function models\Exception\logException;
+
 
 class Post {
 
@@ -170,21 +173,23 @@ class Post {
     public static function remove($id) {
 
         try {
+        
             $db = Db::getInstance();
             //make sure $id is an integer
-            $id = intval($idd);
-            $req = $db->prepare('delete FROM post WHERE id = :id');
+            $id = intval($id);
+           $req = $db->prepare('delete FROM post WHERE id = :id');
             // the query was prepared, now replace :id with the actual $id value
-            $req->execute(array('id' => $id));
-        
-        throw new Exception("whoops");}
- catch (Exception $e) {
-            header("location:views/pages/error.php");
+                   $req->execute(array('id' => $id));
 
+        } catch (Exception $e) {
+       
+           call('pages', 'error');
             logException($e);
+            die("");
+         
         }
-   
+    }
 
-}}    
+}
 
 ?>

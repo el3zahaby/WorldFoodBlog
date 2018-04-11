@@ -17,9 +17,8 @@
             $action = 'home';
         }
         require_once('views/layout.php');
-      
+//        require_once('models/Exception.php');
         ?>
-      
+     
     </body>
-   
 </html>
