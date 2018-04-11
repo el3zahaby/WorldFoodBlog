@@ -49,7 +49,7 @@
                 </button>
             </div>
             <br />
-            <!--<label>have an account ! <a href="signinuser.php">Sign In</a></label>-->
+            <label>have an account ! <a href="signinuser.php">Sign In</a></label>
         </form>
        </div>
 </div>

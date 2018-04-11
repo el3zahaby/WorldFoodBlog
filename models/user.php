@@ -34,11 +34,12 @@ class User {
 
 public static function add() {
 $db = Db::getInstance();
+ $new_password = password_hash($password, PASSWORD_DEFAULT);
 $req = $db->prepare("Insert into username(username, email,password) values (:username, :email, :password)");
 
 $req->bindParam(':username', $username);
 $req->bindParam(':email', $email);
-$req->bindParam(':password', $password);
+$req->bindParam(':password', $new_password);
 
 
 
