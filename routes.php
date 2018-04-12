@@ -13,6 +13,7 @@ function call($controller, $action) {
         break;
 
 
+
         default:
             //for all data-driven pages use a specific Controller class
             //we need the model to query the database later in the process
@@ -30,11 +31,16 @@ function call($controller, $action) {
 $controllers = array('pages' => ['home', 'error'],
 
                     'product' => ['readAll','read','create','update','delete'],
-                    'user' => ['register'],
+
+                    'user' => ['register', 'login'],
+                  
+                 
+
     
     'post' => ['readAllPosts', 'read', 'create', 'delete', 'update'],
     
 );
+
 
 
 // check that the requested controller and action are both allowed
