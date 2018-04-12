@@ -17,7 +17,7 @@ class User {
       //$this->typeid = $typeid;
       //$this->create_date = $create_date;
 
-    
+    } 
     public static function allusers() {
       $list = [];
       $db = Db::getInstance();
@@ -41,7 +41,7 @@ $req->bindParam(':password', $password);
 // set parameters and execute
 if(isset($_POST['username'])&& $_POST['username']!=""){
 $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
-
+}
 if(isset($_POST['email'])&& $_POST['email']!=""){
 $filteredEmail = filter_input(INPUT_POST,'email', FILTER_SANITIZE_SPECIAL_CHARS);
 }
