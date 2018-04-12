@@ -18,10 +18,9 @@ require_once('views/users/registeruser.php');
 }
 else { 
 User::add();
-
-$users = User::allusers(); //$products is used within the view
-require_once('views/users/login.php');
+require_once('index.php');
 }
+//$users = User::allusers(); //$products is used within the view
 
 }
 
@@ -31,29 +30,26 @@ require_once('views/users/login.php');
 public function login() {
 
 
-
-session_start();
-
-if($user->is_loggedin()!="")
-{
- $user->redirect('home.php');
-}
-
-if(isset($_POST['btn-login']))
-{
- $username = $_POST['username'];
- $email = $_POST['email'];
- $password = $_POST['password'];
-  
- if($user->login($username,$email,$password))
- {
-  $user->redirect('index.php');
- }
- else
- {
-  $error = "Wrong Details !";
-
-}
-}
-}}
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
 require_once('views/users/login.php');
+}
+else { 
+User::login();
+}
+
+////session_start();
+//
+//if ((isset($_SESSION['username'])))
+//{
+//require_once ('views/users/login.php');   
+//}
+//
+// else
+// {
+//  return call ('pages', 'error');
+
+
+}
+}
+
+//}

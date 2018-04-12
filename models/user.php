@@ -29,12 +29,12 @@ class User {
     }
 public static function add() {
 $db = Db::getInstance();
-$new_password = password_hash($password, PASSWORD_DEFAULT);
+//$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-$req = $db->prepare("Insert into username(username, email,password) values (:username, :email, :password)");
+$req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
 $req->bindParam(':username', $username);
 $req->bindParam(':email', $email);
-$req->bindParam(':password', $new_password);
+$req->bindParam(':password', $password);
 // set parameters and execute
 if(isset($_POST['username'])&& $_POST['username']!=""){
 $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -56,6 +56,9 @@ $req->execute();
 public static function login() {
     $db = Db::getInstance();
     session_start();
+    if (isset($_SESSION['username']))
+    {
+        
      $req = $db->prepare("SELECT * FROM username WHERE username=:username OR email=:email LIMIT 1");
           $req->execute(array(':username'=>$username, ':email'=>$email));
           $userRow=$req->fetch(PDO::FETCH_ASSOC);
@@ -63,7 +66,7 @@ public static function login() {
           {
              if(password_verify($password, $userRow['password']))
              {
-                $_SESSION['user_session'] = $userRow['id'];
+                $_SESSION['username'] = $userRow['id'];
                 return true;
              }
              else
@@ -74,6 +77,7 @@ public static function login() {
        }
  
        
+}
 }
 
 

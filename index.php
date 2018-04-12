@@ -6,7 +6,7 @@
         <title>MVC Skeleton</title>
     <h1>World Food Blog</h1>
     </head>
-    <body>
+        <body>
         
         <?php
     require_once('connection.php');
