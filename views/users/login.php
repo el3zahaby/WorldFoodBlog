@@ -7,7 +7,8 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 </head>
 <body>
-<div class="container">
+
+    <div class="container">
      <div class="form-container">
         <form method="post">
             <h2>World Food Blog: Sign in.</h2><hr />

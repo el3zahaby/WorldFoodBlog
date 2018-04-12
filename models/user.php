@@ -29,7 +29,8 @@ class User {
     }
 public static function add() {
 $db = Db::getInstance();
- $new_password = password_hash($password, PASSWORD_DEFAULT);
+$new_password = password_hash($password, PASSWORD_DEFAULT);
+
 $req = $db->prepare("Insert into username(username, email,password) values (:username, :email, :password)");
 $req->bindParam(':username', $username);
 $req->bindParam(':email', $email);
@@ -42,8 +43,9 @@ if(isset($_POST['email'])&& $_POST['email']!=""){
 $filteredEmail = filter_input(INPUT_POST,'email', FILTER_SANITIZE_SPECIAL_CHARS);
 }
 if(isset($_POST['password'])&& $_POST['password']!=""){
-$filteredPassword = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
+$filteredPassword = filter_input(INPUT_POST,'password');
 }
+ 
 $username = $filteredUsername;
 $email = $filteredEmail;
 $password = $filteredPassword;
@@ -74,7 +76,8 @@ public static function login() {
        
 }
 
-   
+
+
 
 
 
