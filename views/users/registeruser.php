@@ -32,17 +32,19 @@
             }
             ?>
             <div class="form-group">
+
             <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php if(isset($error)){echo $username;}?>" />
             </div>
             <div class="form-group">
             <input type="text" class="form-control" name="email" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $email;}?>" />
+
             </div>
             <div class="form-group">
              <input type="password" class="form-control" name="password" placeholder="Enter Password" />
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-             <button type="submit" class="btn btn-block btn-primary" name="btn-signup">
+             <button type="submit" class="btn btn-block btn-primary">
                  <i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
                 </button>
             </div>
