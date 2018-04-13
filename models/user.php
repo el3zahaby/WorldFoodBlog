@@ -29,12 +29,12 @@ class User {
     }
 public static function add() {
 $db = Db::getInstance();
-//$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
 $req->bindParam(':username', $username);
 $req->bindParam(':email', $email);
-$req->bindParam(':password', $password);
+$req->bindParam(':password', $hashed_password);
 // set parameters and execute
 if(isset($_POST['username'])&& $_POST['username']!=""){
 $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
