@@ -1,5 +1,19 @@
-
-
+<?php>
+if(isset($_POST['submit']))
+{
+ $username = $_POST['username'];
+ $email = $_POST['email'];
+ $password = $_POST['password'];
+  
+ if($user->login($username,$email,$password))
+ {
+  $user->redirect('index.php');
+ }
+ else
+ {
+  $error = "Wrong Details !";
+ }
+ ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,7 +21,8 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 </head>
 <body>
-<div class="container">
+
+    <div class="container">
      <div class="form-container">
         <form method="post">
             <h2>World Food Blog: Sign in.</h2><hr />
@@ -22,19 +37,19 @@
             }
             ?>
             <div class="form-group">
-             <input type="text" class="form-control" name="txt_uname_email" placeholder="Username or E mail ID" required />
+             <input type="text" class="form-control" name="username" placeholder="Username or E mail ID" required />
             </div>
             <div class="form-group">
-             <input type="password" class="form-control" name="txt_password" placeholder="Your Password" required />
+             <input type="password" class="form-control" name="password" placeholder="Your Password" required />
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-             <button type="submit" name="btn-login" class="btn btn-block btn-primary">
+             <button type="submit" name="submit" class="btn btn-block btn-primary">
                  <i class="glyphicon glyphicon-log-in"></i>&nbsp;SIGN IN
                 </button>
             </div>
             <br />
-            <label>Don't have account yet ! <a href="sign-up.php">Sign Up</a></label>
+        
         </form>
        </div>
 </div>

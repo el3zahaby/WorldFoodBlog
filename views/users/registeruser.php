@@ -24,20 +24,20 @@
                   <?php
                }
             }
-            else if(isset($_GET['joined']))
+           // else if(isset($_GET['joined']))
             {
                  ?>
-                 <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='signin.php'>login</a> here
-                 </div>
+                
                  <?php
             }
             ?>
             <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
+
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php if(isset($error)){echo $username;}?>" />
             </div>
             <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $umail;}?>" />
+            <input type="text" class="form-control" name="email" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $email;}?>" />
+
             </div>
             <div class="form-group">
              <input type="password" class="form-control" name="password" placeholder="Enter Password" />
@@ -49,7 +49,7 @@
                 </button>
             </div>
             <br />
-            <label>have an account ! <a href="signin.php">Sign In</a></label>
+            
         </form>
        </div>
 </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +8,7 @@
     
 
     </head>
-    <body>
+        <body>
         
         <?php
     require_once('connection.php');

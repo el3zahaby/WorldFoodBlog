@@ -1,9 +1,11 @@
 <?php
+require 'models/user.php';
 
 class UserController {
     public function readAllUsers (){
         //we store all the users in a variable
-        $users = User::allusers();
+        $users = User:: allusers();
+
         require_once ('views/users/readallusers.php');
         
     }
@@ -20,14 +22,34 @@ require_once('views/users/registeruser.php');
 else { 
 
 User::add();
+require_once('index.php');
+}
+//$users = User::allusers(); //$products is used within the view
 
-echo "hi";
-$users = User::allusers(); //$products is used within the view
-require_once('views/users/readallusers.php');
 
 }
 
+
+
+
+public function login() {
+
+
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+ 
+require_once('views/users/login.php');
 }
-   
-    }
-    ?>
+else { 
+
+
+User::login ();
+
+require_once('index.php');
+}
+}
+
+
+
+}
+
+

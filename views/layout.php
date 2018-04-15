@@ -1,5 +1,8 @@
+
+
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +41,8 @@
                                     </ul>
                                 </li>
                                 <li><a href="#">Contributors</a></li>
-                                <li><a href="#">Contact us</a></li>
+                               
+                    <li><a href='?controller=user&action=readallusers'>All users</a></li>
                             </ul>
                         </nav>
 
