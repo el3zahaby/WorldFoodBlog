@@ -44,21 +44,12 @@ else {
 
 User::login ();
 
+require_once('index.php');
 }
 }
-////session_start();
-//
-//if ((isset($_SESSION['username'])))
-//{
-//require_once ('views/users/login.php');   
-//}
-//
-// else
-// {
-//  return call ('pages', 'error');
+
 
 
 }
 
 
-//}
