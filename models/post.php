@@ -7,12 +7,16 @@ class Post {
     public $title;
     public $content;
     public $image;
+    public $DateAdded;
+    public $cuisine_id;
 
-    public function __construct($id, $title, $content, $image) {
+    public function __construct($id, $title, $content, $image, $DateAdded, $cuisine_id) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->image = $image;
+        $this->DateAdded = $DateAdded;
+        $this->cuisine_id = $cuisine_id;
     }
 
 //    Static belongs to the general class not to instance
@@ -22,7 +26,7 @@ class Post {
         $req = $db->query('SELECT * FROM post');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
         }
         return $list;
     }
@@ -31,12 +35,15 @@ class Post {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM post WHERE id = :id');
+        $req = $db->prepare(' SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
+FROM post
+INNER JOIN cuisine ON post.cuisine_id = cuisine.id
+WHERE post.id=:id; ');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['image']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'],  $post['DateAdded'], $post['name']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
@@ -53,7 +60,6 @@ class Post {
         $req->bindParam(':content', $content);
         $req->bindParam(':image', $image);
 // set name and price parameters and execute
-
         if (isset($_POST['title']) && $_POST['title'] != "") {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         }
@@ -61,7 +67,6 @@ class Post {
             $filteredContent = $_POST['content'];
         }
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
-
         $title = $filteredTitle;
         $content = $filteredContent;
         $image = Post::updateFile($title);
@@ -69,19 +74,18 @@ class Post {
         if (($_POST['title'] = "") && ($_POST['content'] = "")) {
             return "null";
         }
-
-//upload Post image if it exists
-//        if (!empty($_FILES[self::InputKey]['name'])) {
-//            Post::uploadFile($name);
-//        }
     }
 
     public static function add() {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into post(title, content, image) values (:title, :content, :image)");
+        $req = $db->prepare("Insert into post(title, content, image,  DateAdded, cuisine_id) values (:title, :content, :image, :DateAdded, :cuisine_id)");
         $req->bindParam(':title', $title);
         $req->bindParam(':content', $content);
         $req->bindParam(':image', $image);
+        $req->bindParam(':cuisine_id', $cuisine_id);
+        $req->bindParam(':DateAdded', $DateAdded);
+
+
 // set parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -90,14 +94,18 @@ class Post {
             $filteredContent = $_POST['content'];
         }
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
-
         $title = $filteredTitle;
         $content = $filteredContent;
         $image = Post::uploadFile($title);
-        ;
+        $DateAdded = Post::AddDate();
+        $cuisine_id = $_POST['cuisine_id'];
         $req->execute();
-
 //upload post image
+    }
+
+    public static function AddDate() {
+
+        return date("Y/m/d");
     }
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];
@@ -106,7 +114,7 @@ class Post {
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
     public static function uploadFile(string $imageFileName) {
-if (empty($_FILES[self::InputKey])) {
+        if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
             trigger_error("Please upload an image for this post");
         }
@@ -133,7 +141,8 @@ if (empty($_FILES[self::InputKey])) {
         }
         return $imagePath;
     }
-    const AllowedTypess = ['image/jpeg', 'image/jpg',''];
+
+    const AllowedTypess = ['image/jpeg', 'image/jpg', ''];
     const InputKeys = 'image';
 
     public static function updateFile(string $imageFileName) {
@@ -158,7 +167,6 @@ if (empty($_FILES[self::InputKey])) {
         if (!move_uploaded_file($tempFile, $destinationFile)) {
 //            trigger_error("Handle Error");
             return $imagePath;
-            
         }
         //Clean up the temp file
         if (file_exists($tempFile)) {

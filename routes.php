@@ -10,7 +10,7 @@ function call($controller, $action) {
         case 'pages':
             $controller = new PagesController();
 
-        break;
+            break;
 
 
         default:
@@ -28,12 +28,10 @@ function call($controller, $action) {
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
-
-                    'product' => ['readAll','read','create','update','delete'],
-                    'user' => ['register'],
-    
+    'product' => ['readAll', 'read', 'create', 'update', 'delete'],
+    'user' => ['register'],
     'post' => ['readAllPosts', 'read', 'create', 'delete', 'update'],
-    
+    'cuisine' => ['add', 'readAllCuisines'],
 );
 
 

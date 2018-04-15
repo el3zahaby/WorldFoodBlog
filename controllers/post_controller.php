@@ -1,4 +1,5 @@
 <?php
+require 'models/cuisine.php';
 
 class PostController {
     public function readAllPosts() {
@@ -27,8 +28,14 @@ class PostController {
       // if it's a GET request display a blank form for creating a new post
       // else it's a POST so add to the database and redirect to readAllPosts action
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
+     
+          $cuisines = Cuisine::all(); 
           require_once('views/posts/create.php');
-      }
+      
+          
+           }
+         
+      
       else { 
             Post::add();
              
