@@ -63,7 +63,7 @@ $req->execute();
 
 
 
-      public function login(){
+      public static function login(){
     $db = Db::getInstance();
                 if (isset($_POST['submit'])) {
 
