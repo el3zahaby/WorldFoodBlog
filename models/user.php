@@ -17,7 +17,12 @@ class User {
       //$this->typeid = $typeid;
       //$this->create_date = $create_date;
 
-    } 
+    }
+    
+
+
+    
+
     public static function allusers() {
       $list = [];
       $db = Db::getInstance();
@@ -57,33 +62,54 @@ $req->execute();
 }
 
 
-public static function login() {
+
+      public function login(){
     $db = Db::getInstance();
-    session_start();
-    if (isset($_SESSION['username']))
-    {
-        
-     $req = $db->prepare("SELECT * FROM username WHERE username=:username OR email=:email LIMIT 1");
-          $req->execute(array(':username'=>$username, ':email'=>$email));
-          $userRow=$req->fetch(PDO::FETCH_ASSOC);
-          if($req->rowCount() > 0)
-          {
-             if(password_verify($password, $userRow['password']))
-             {
-                $_SESSION['username'] = $userRow['id'];
-                return true;
-             }
-             else
-             {
-                return false;
-             }
-          }$req->execute();
+                if (isset($_POST['submit'])) {
+
+                    $sqlquery = "SELECT username, password from username WHERE username=:username AND password= :password";
+                    $querystring = $db->prepare($sqlquery);
+                    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+                    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+                    $querystring->bindParam(':username', $username, PDO::PARAM_INT);
+                    $querystring->bindParam(':password', $password, PDO::PARAM_INT);
+                    $querystring->execute(
+                            array(
+                                'username' => $_POST["username"], 'password' => $_POST["password"])
+                    );
+//if invalid user
+                    $count = $querystring->rowCount();
+                    if ($count > 0) {
+                        header("location:index.php");
+                    } else {
+                        $result = '
+       <div  style="margin-top: 2%;">
+            <div class="col-md-6 col-md-offset-3">  
+                <div class="row">
+                    <div id="logo" class="text-center">
+                        <h2>Sorry! you are not registered!</h2><p></p>
+                    </div> </div> </div></div>';
+                        echo "<h6>$result</h6>";
+                    }
        }
- 
-       
-}
-}
-
-
-
-
+    }
+}     
+           
+           
+         
+//   public function is_loggedin()
+//   {
+//      if(isset($_SESSION['username']))
+//      {
+//         return true;
+//      }
+//   }
+// 
+//  
+// 
+//   public function logout()
+//   {
+//        session_destroy();
+//        unset($_SESSION['username']);
+//        return true;
+//   }

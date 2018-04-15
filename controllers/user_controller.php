@@ -1,4 +1,5 @@
 <?php
+require 'models/user.php';
 
 class UserController {
     public function readAllUsers (){
@@ -35,25 +36,20 @@ public function login() {
 
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
+ 
 require_once('views/users/login.php');
 }
 else { 
-User::login();
-}
-
-////session_start();
-//
-//if ((isset($_SESSION['username'])))
-//{
-//require_once ('views/users/login.php');   
-//}
-//
-// else
-// {
-//  return call ('pages', 'error');
 
 
+User::login ();
+
+require_once('index.php');
 }
 }
 
-//}
+
+
+}
+
+
