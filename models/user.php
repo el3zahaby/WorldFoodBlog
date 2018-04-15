@@ -32,12 +32,12 @@ class User {
       
 public static function add() {
 $db = Db::getInstance();
-$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+//$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
 $req->bindParam(':username', $username);
 $req->bindParam(':email', $email);
-$req->bindParam(':password', $hashed_password);
+$req->bindParam(':password', $password);
 // set parameters and execute
 if(isset($_POST['username'])&& $_POST['username']!=""){
 $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -57,33 +57,85 @@ $req->execute();
 }
 
 
-public static function login() {
+
+      public function login(){
     $db = Db::getInstance();
-    session_start();
-    if (isset($_SESSION['username']))
-    {
-        
-     $req = $db->prepare("SELECT * FROM username WHERE username=:username OR email=:email LIMIT 1");
-          $req->execute(array(':username'=>$username, ':email'=>$email));
-          $userRow=$req->fetch(PDO::FETCH_ASSOC);
-          if($req->rowCount() > 0)
-          {
-             if(password_verify($password, $userRow['password']))
-             {
-                $_SESSION['username'] = $userRow['id'];
-                return true;
-             }
-             else
-             {
-                return false;
-             }
-          }$req->execute();
+                if (isset($_POST['submit'])) {
+
+                    $sqlquery = "SELECT username, password from username WHERE username=:username AND password= :password";
+                    $querystring = $db->prepare($sqlquery);
+                    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+                    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+                    $querystring->bindParam(':username', $username, PDO::PARAM_INT);
+                    $querystring->bindParam(':password', $password, PDO::PARAM_INT);
+                    $querystring->execute(
+                            array(
+                                'username' => $_POST["username"], 'password' => $_POST["password"])
+                    );
+//if invalid user
+                    $count = $querystring->rowCount();
+                    if ($count > 0) {
+                        header("location:index.php");
+                    } else {
+                        $result = '
+       <div  style="margin-top: 2%;">
+            <div class="col-md-6 col-md-offset-3">  
+                <div class="row">
+                    <div id="logo" class="text-center">
+                        <h2>Sorry! you are not registered!</h2><p></p>
+                    </div> </div> </div></div>';
+                        echo "<h6>$result</h6>";
+                    }
        }
+    }
+}     
+           
+           
+           
+//          $stmt = $db->prepare("SELECT * FROM username WHERE username=:username OR email=:email LIMIT 1");
+//          $stmt->execute(array(':username'=> $username, ':email'=> $email));
+//          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+//          if($stmt->rowCount() > 0)
+//          {
+//             if(password_verify($password, $userRow['password']))
+//             {
+//                $_SESSION['user_session'] = $userRow['id'];
+//                return true;
+//             }
+//             else
+//             {
+//                return false;
+//             }
+//          }
+//       }
+//       catch(PDOException $e)
+//       {
+//           echo $e->getMessage();
+//       }
+//
+//}
+
  
+
        
-}
-}
-
-
-
-
+       
+         
+//   public function is_loggedin()
+//   {
+//      if(isset($_SESSION['user_session']))
+//      {
+//         return true;
+//      }
+//   }
+// 
+//   public function redirect($url)
+//   {
+//       header("Location: $url");
+//   }
+// 
+//   public function logout()
+//   {
+//        session_destroy();
+//        unset($_SESSION['user_session']);
+//        return true;
+//   }

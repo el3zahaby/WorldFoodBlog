@@ -1,5 +1,19 @@
-
-
+<?php>
+if(isset($_POST['submit']))
+{
+ $username = $_POST['username'];
+ $email = $_POST['email'];
+ $password = $_POST['password'];
+  
+ if($user->login($username,$email,$password))
+ {
+  $user->redirect('index.php');
+ }
+ else
+ {
+  $error = "Wrong Details !";
+ }
+ ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,7 +44,7 @@
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-             <button type="submit" name="btn-login" class="btn btn-block btn-primary">
+             <button type="submit" name="submit" class="btn btn-block btn-primary">
                  <i class="glyphicon glyphicon-log-in"></i>&nbsp;SIGN IN
                 </button>
             </div>
