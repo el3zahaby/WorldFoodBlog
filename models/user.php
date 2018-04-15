@@ -16,8 +16,13 @@ class User {
       $this->email = $email;
       //$this->typeid = $typeid;
       //$this->create_date = $create_date;
+
     }
     
+
+
+    
+
     public static function allusers() {
       $list = [];
       $db = Db::getInstance();
