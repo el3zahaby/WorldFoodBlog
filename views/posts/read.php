@@ -1,9 +1,11 @@
-<p>This is the requested Post:</p>
+
 
 <div  id="get-data-form">
 
-    <p>Post title: <?php echo $post->title; ?></p>
+ <p>Post title:I'm here<?php echo $post->title; ?></p>
+    <p>Date Posted:  <?php echo $post->DateAdded; ?></p>
     <p>Post content: <?php echo $post->content; ?></p>
+     <p>Post cuisine: <?php echo $post->cuisine_id ; ?></p>
 </div>
 
 <?php

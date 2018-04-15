@@ -7,12 +7,16 @@
     <form id="get-data-form" method="POST"  class="w3-container" enctype="multipart/form-data">
     <h2>Update Post</h2>
     <p>
+                 <label>Title</label>
         <input class="form-group" type="text" name="title" value="<?= $post->title; ?>">
-        <label>Title</label>
+      
     </p>
     <p>
-        <textarea  class="tinymce" id="texteditor" type="text" name="content" value="<?= $post->content; ?>" ></textarea>
-        <label>Content</label>
+         <label>Content</label>
+        <textarea  class="tinymce" id="texteditor" type="text" name="content" value="" > <?php echo $post->content;?> 
+           
+        </textarea> 
+       
     </p>
             
   <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />

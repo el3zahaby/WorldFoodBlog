@@ -2,11 +2,18 @@
 
 <?php foreach($posts as $post) { ?>
   <p>
-    <?php echo $post->title; ?> &nbsp; &nbsp;
-    <a href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> &nbsp; &nbsp;
-    <button value = "Delete" onclick="ConfirmDelete()">Delete</button> &nbsp; &nbsp;
-    <a href='?controller=post&action=update&id=<?php echo $post->id; ?>'>Update Product</a> &nbsp;
+
+    
+  <?php  echo "<a href='?controller=post&action=read&id=". $post->id  ."'><img src=" . $post->image. ' width="140" height="100"/> </a>'?> &nbsp; &nbsp;
+<?php echo $post->title; ?> &nbsp; &nbsp;
+
+    <a class="btn btn-secondary active" href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> &nbsp; &nbsp;
+    <button class="btn btn-secondary active" value = "Delete" onclick="ConfirmDelete()">Delete Post</button> &nbsp; &nbsp;
+    <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; ?>> '>Update Post</a> &nbsp;
+     
   </p>
+ 
+
 <?php } ?>
 <script>
 function ConfirmDelete() {
@@ -21,4 +28,6 @@ function ConfirmDelete() {
     document.getElementById("demo").innerHTML = txt;
 }
 </script>
+
+ 
 </html>
