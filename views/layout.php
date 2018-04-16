@@ -48,6 +48,7 @@
                     <li> <a href='?controller=post&action=create' class="glyphicon glyphicon-edit"> Create Post </a></li>
                     <li>  <a href='?controller=user&action=register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href='?controller=user&action=login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href='?controller=user&action=logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>

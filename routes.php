@@ -33,7 +33,7 @@ $controllers = array('pages' => ['home', 'error'],
 
 
 
-                    'user' => ['register', 'login'],
+                    'user' => ['register', 'login', 'logout', 'is_loggedin'],
                   
                  
 

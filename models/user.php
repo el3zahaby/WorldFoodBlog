@@ -14,6 +14,7 @@ class User {
       $this->username  = $username;
       $this->password = $password;
       $this->email = $email;
+      
       //$this->typeid = $typeid;
       //$this->create_date = $create_date;
 
@@ -21,7 +22,7 @@ class User {
     
 
 
-    
+
 
     public static function allusers() {
       $list = [];
@@ -65,6 +66,10 @@ $req->execute();
 
       public static function login(){
     $db = Db::getInstance();
+    
+    session_start();
+    $_SESSION["user_session"] = "username";
+    
                 if (isset($_POST['submit'])) {
 
                     $sqlquery = "SELECT username, password from username WHERE username=:username AND password= :password";
@@ -93,23 +98,25 @@ $req->execute();
                     }
        }
     }
-}     
+     
            
-           
-         
-//   public function is_loggedin()
-//   {
-//      if(isset($_SESSION['username']))
-//      {
-//         return true;
-//      }
-//   }
-// 
-//  
-// 
-//   public function logout()
-//   {
-//        session_destroy();
-//        unset($_SESSION['username']);
-//        return true;
-//   }
+      public function is_loggedin()
+   {
+      if(isset($_SESSION['user_session']))
+      {
+         return true;
+      }
+   }
+ 
+   public function redirect($url)
+   {
+       header("Location: $url");
+   }
+ 
+   public function logout()
+   {
+        session_destroy();
+        unset($_SESSION['user_session']);
+        return true;
+   }
+}
