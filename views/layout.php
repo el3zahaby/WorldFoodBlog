@@ -33,9 +33,10 @@
                                         <li><a href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
                                         <li><a href="#">By Contributors</a></li>
                                         <li><a href="#">Most Popular</a></li>
+                                            <li><a href="?controller=post&action=readAllPosts">All Recipes</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Contributors</a></li>
+                                <li><a href="#">Contact us</a></li>
                                
                     <li><a href='?controller=user&action=readallusers'>All users</a></li>
                             </ul>

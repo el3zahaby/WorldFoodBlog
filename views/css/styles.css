@@ -13,17 +13,20 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 .navbar-custom {
     color:  #717068;
-    background-color: #F4D63D;
+    background-color: #FFFFFF;
     padding-top: 0.10;
 }
 p.serif {
     font-family: "Times New Roman", Times, serif;
     
 }
+
 a {
     color: #717068;
     text-decoration: none;
 }
+
+
 .navbar-brand,
 navbar-nav li a {
     line-height: 10px;
@@ -32,3 +35,4 @@ navbar-nav li a {
     text-align:center; 
     display: inline-block;
 }
+
