@@ -17,6 +17,7 @@ Class CuisineController {
       try{
       // we use the given id to get the correct post
         $cuisine= Cuisine::find($_GET['id']);
+   
       $postsForCuisine = Post::PostsByCuisine($_GET['id']);
       require_once('views/cuisines/readCuisine.php');
       }

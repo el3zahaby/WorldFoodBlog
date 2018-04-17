@@ -2,9 +2,9 @@
     <html>  <style>
         .floating-box {
             display: inline-block;
-            width: 270px;
-            height: 240px;
-            margin: 30px;
+            width: 280px;
+            height: 250px;
+            margin: 10px;
             border: 0px solid #717068;  
         }
 
