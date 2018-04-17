@@ -43,7 +43,7 @@ public function logout() {
 
             User::logout();
    
-            require_once 'index.php';
+            require_once "views/users/logout.php";
 
 
 }

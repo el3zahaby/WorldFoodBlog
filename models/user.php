@@ -109,8 +109,10 @@ $req->execute();
     }
 
     public static function logout() {
-        
+        unset($_SESSION["username"]);
         session_destroy();
+        
+
   
     }
     
