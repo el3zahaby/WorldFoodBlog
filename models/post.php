@@ -127,10 +127,11 @@ where post.cuisine_id =:cuisine_id;');
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = $_POST['content'];
         }
+        $random = (rand (1, 1000));
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         $title = $filteredTitle;
         $content = $filteredContent;
-        $image = Post::uploadFile($title);
+        $image = Post::uploadFile($random);
         $DateAdded = Post::AddDate();
         $cuisine_id = $_POST['cuisine_id'];
         $req->execute();

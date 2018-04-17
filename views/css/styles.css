@@ -29,10 +29,14 @@ a {
 
 .navbar-brand,
 navbar-nav li a {
-    line-height: 10px;
-    height: 100px;
+    line-height: 10em;
+    height: 100em;
     padding-top: 0;
     text-align:center; 
     display: inline-block;
+      margin: 1em;
+      
 }
 
+
+  

@@ -1,9 +1,27 @@
-<html><p>Here is a list of all posts:</p>
+<html>
+    
+<body>
+   <style>
+    div.a {
+        text-align: center;
+    }
+    div.container{
+        margin: 1px;
+       
+     
+        
+        
+    }
+</style>
+<div  class = "container" >
+   <p>Here is a list of all posts:</p>
+
+
 
 <?php foreach($posts as $post) { ?>
   <p>
 
-    
+   <div claiss="container">
   <?php  echo "<a href='?controller=post&action=read&id=". $post->id  ."'><img src=" . $post->image. ' width="150" height="100"/> </a>'?> &nbsp; &nbsp;
 <?php echo $post->title; ?> &nbsp; &nbsp;
 
@@ -13,7 +31,7 @@
      
   </p>
  
-
+</div>
 <?php } ?>
 <script>
 function ConfirmDelete() {
@@ -28,6 +46,6 @@ function ConfirmDelete() {
     document.getElementById("demo").innerHTML = txt;
 }
 </script>
-
- 
+</div>
+</body>
 </html>

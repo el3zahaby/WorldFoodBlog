@@ -1,7 +1,20 @@
 <html>
 
+    <body><style>
+            div.a {
+        text-align: center;
+    }
+    div.container{
+        margin: 3px;
+       
+     
+        
+        
+    }
+</style>
+<div  class = "container" >
+        </style>
 
-</html>
 <p>You have selected the  <?php echo $cuisine->name; ?> cuisine<p>
     <?php
     
@@ -14,6 +27,6 @@
     <?php }?>
 <!--        echo $post->title;
          echo $post->image . "<br>";-->
-    
-  
+    </div>
+  </body>
 </html>
