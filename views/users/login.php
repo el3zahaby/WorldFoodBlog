@@ -14,11 +14,11 @@ if(isset($_POST['submit']))
   $error = "Wrong Details !";
 }}
  ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Login : WorldFoodBlog</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
 </head>
 <body>
 

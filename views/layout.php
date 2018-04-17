@@ -16,15 +16,6 @@
         <title>Layout</title>
     </head>
     <body>
-        <?php
-        session_start();
-
-        if (isset($_SESSION['username'])) {  
-        require_once "views/users/userLayout.php";
-        }
-        else {
-            ?>
-
         <nav class="navbar-custom ">
 
             <div class="container">
@@ -41,11 +32,12 @@
                                         <li><a href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
                                         <li><a href="#">By Contributors</a></li>
                                         <li><a href="#">Most Popular</a></li>
+                                         <li><a href="?controller=post&action=readAllPosts">All Recipes</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Contributors</a></li>
-
                                 <li><a href='?controller=user&action=readallusers'>All users</a></li>
+                               
                             </ul>
                         </nav>
 
@@ -53,19 +45,25 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
 
+                    <?php
+                    session_start();
 
-                    <li>  <a href='?controller=user&action=register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href='?controller=user&action=login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                          
-             
+                    if (isset($_SESSION['username'])) {
+                        include "views/users/userLayout.php";
+                    } else {
+                        ?> 
+                        <li>  <a href='?controller=user&action=register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href='?controller=user&action=login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                    <?php } ?>
+
                 </ul>
             </div>
         </nav>
-        <?PHP }?>
 
-      
+
         <div class="w3-container w3-pink">
-<?php require_once('routes.php'); ?>
+            <?php require_once('routes.php'); ?>
             </<div>
                 <div class="w3-container w3-gray">
                     <footer >
