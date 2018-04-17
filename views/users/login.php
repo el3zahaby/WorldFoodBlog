@@ -1,4 +1,4 @@
-<?php>
+<?php
 if(isset($_POST['submit']))
 {
  $username = $_POST['username'];
@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
  else
  {
   $error = "Wrong Details !";
- }
+}}
  ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -48,7 +48,7 @@ if(isset($_POST['submit']))
                  <i class="glyphicon glyphicon-log-in"></i>&nbsp;SIGN IN
                 </button>
             </div>
-            <br />
+            <br/>
         
         </form>
        </div>

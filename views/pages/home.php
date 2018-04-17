@@ -17,7 +17,9 @@
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
-<title>Welcome - <?php print($userRow['email']); ?></title>
+<title>Welcome - 
+    <?php // print($userRow['email']); ?>
+</title>
 </head>
 
 <body>
@@ -31,19 +33,7 @@
     </div>
 </div>
 <div class="content">
-<h1>Welcome : <?php print (['username']); ?><h1>
-      
-                <br>
-                    <h3>You are an approved user and can now start uploading your own contributions to World Food Blog. Welcome to the team!</h3>
-                    <br>
-                        <h3> OR </h3> 
-                <br>
-                                    
-                                          
-          <h3>You can comment on other posts and once you are approved you will be able to contribute your own post to the World Food Blog. Please await an email confirmation from Admin</h3>
-
-          
-
+Hello
  
 </div>
 </body>

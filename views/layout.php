@@ -16,6 +16,14 @@
         <title>Layout</title>
     </head>
     <body>
+        <?php
+        session_start();
+
+        if (isset($_SESSION['username'])) {  
+        require_once "views/users/userLayout.php";
+        }
+        else {
+            ?>
 
         <nav class="navbar-custom ">
 
@@ -36,8 +44,8 @@
                                     </ul>
                                 </li>
                                 <li><a href="#">Contributors</a></li>
-                               
-                    <li><a href='?controller=user&action=readallusers'>All users</a></li>
+
+                                <li><a href='?controller=user&action=readallusers'>All users</a></li>
                             </ul>
                         </nav>
 
@@ -45,16 +53,19 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li> <a href='?controller=post&action=create' class="glyphicon glyphicon-edit"> Create Post </a></li>
+
                     <li>  <a href='?controller=user&action=register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href='?controller=user&action=login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href='?controller=user&action=logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                          
+             
                 </ul>
             </div>
         </nav>
+        <?PHP }?>
 
+      
         <div class="w3-container w3-pink">
-            <?php require_once('routes.php'); ?>
+<?php require_once('routes.php'); ?>
             </<div>
                 <div class="w3-container w3-gray">
                     <footer >
@@ -62,12 +73,12 @@
                         <a class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
                         <!--Twitter-->
                         <a class="tw-ic mr-3"><i class="fa fa-lg fa-twitter"> </i></a>
-                    
+
                         <!--Instagram-->
                         <a class="ins-ic mr-3"><i class="fa fa-lg fa-instagram"> </i></a>
                         <!--Pinterest-->
                         <a class="pin-ic mr-3"><i class="fa fa-lg fa-pinterest"> </i></a>
-      
+
                         <!--Youtube-->
                         <a class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
                     </footer>
