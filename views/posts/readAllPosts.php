@@ -27,9 +27,11 @@
 <?php echo $post->title; ?> &nbsp; &nbsp;
 
     <a class="btn btn-secondary active" href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> &nbsp; &nbsp;
+    <?php
+    if (isset($_SESSION['username'])) {   ?>
     <button class="btn btn-secondary active" value = "Delete" onclick="ConfirmDelete()">Delete Post</button> &nbsp; &nbsp;
     <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; ?>> '>Update Post</a> &nbsp;
-     
+    <?php }?> 
   </p>
  
 </div>

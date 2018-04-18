@@ -16,7 +16,6 @@
         <title>Layout</title>
     </head>
     <body>
-
         <nav class="navbar-custom ">
 
             <div class="container">
@@ -33,12 +32,18 @@
                                         <li><a href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
                                         <li><a href="#">By Contributors</a></li>
                                         <li><a href="#">Most Popular</a></li>
-                                            <li><a href="?controller=post&action=readAllPosts">All Recipes</a></li>
+
                                     </ul>
                                 </li>
                                 <li><a href="#">Contact us</a></li>
+
+                                         <li><a href="?controller=post&action=readAllPosts">All Recipes</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Contributors</a></li>
+                                <li><a href='?controller=user&action=readallusers'>All users</a></li>
+
                                
-                    <li><a href='?controller=user&action=readallusers'>All users</a></li>
                             </ul>
                         </nav>
 
@@ -46,12 +51,22 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li> <a href='?controller=post&action=create' class="glyphicon glyphicon-edit"> Create Post </a></li>
-                    <li>  <a href='?controller=user&action=register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href='?controller=user&action=login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <?php
+                    session_start();
+
+                    if (isset($_SESSION['username'])) {
+                        include "views/users/userLayout.php";
+                    } else {
+                        ?> 
+                        <li>  <a href='?controller=user&action=register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href='?controller=user&action=login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                    <?php } ?>
+
                 </ul>
             </div>
         </nav>
+
 
         <div class="w3-container w3-pink">
             <?php require_once('routes.php'); ?>
@@ -62,12 +77,12 @@
                         <a class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
                         <!--Twitter-->
                         <a class="tw-ic mr-3"><i class="fa fa-lg fa-twitter"> </i></a>
-                    
+
                         <!--Instagram-->
                         <a class="ins-ic mr-3"><i class="fa fa-lg fa-instagram"> </i></a>
                         <!--Pinterest-->
                         <a class="pin-ic mr-3"><i class="fa fa-lg fa-pinterest"> </i></a>
-      
+
                         <!--Youtube-->
                         <a class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
                    
