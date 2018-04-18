@@ -7,15 +7,19 @@ class User {
     public $username;
     public $password;
     public $email;
+    public $image;
+    public $create_date;
 
     // public $typeid;
     //public $create_date;
 
-    public function __construct($username, $password, $email) {
+    public function __construct($username, $password, $email, $image, $create_date) {
         // $this->id    = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
+        $this->image = $image;
+        $this->create_date = $create_date;
 
         //$this->typeid = $typeid;
         //$this->create_date = $create_date;
@@ -42,7 +46,7 @@ class User {
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $user) {
 
-            $list[] = new User($user['username'], $user['password'], $user['email']);
+            $list[] = new User($user['username'], $user['password'], $user['email'], $user['image'], $user['create_date']);
         }
         return $list;
     }
@@ -116,5 +120,86 @@ $req->execute();
   
     }
     
+ public static function find($id) {
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $id = intval($id);
+        $req = $db->prepare(' SELECT user.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
+FROM post
+INNER JOIN cuisine ON post.cuisine_id = cuisine.id
+WHERE post.id=:id; ');
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+        $post = $req->fetch();
+        if ($post) {
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+        } else {
+            //replace with a more meaningful exception
+            //post with that id not found
+            throw new Exception('A real exception should go here');
+        }
+    }
+
+   public static function PostsByCuisine($cuisine_id) {
+
+ $list = [];
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $cuisine_id = intval($cuisine_id);
+        $req = $db->prepare('SELECT  post.image as image ,post.title as title, post.id as post_id FROM `cuisine` 
+inner join post on post.cuisine_id = cuisine.id
+where post.cuisine_id =:cuisine_id;');
+
+      //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('cuisine_id' => $cuisine_id));
+//          foreach ($req->fetchAll() as $post) {
+        $results = $req->fetchAll();
+        foreach ($results as $result) {
+             $list [] =new Post($result['post_id'], $result['title'], '',$result['image'], '', '','','',$cuisine_id);
+       
+        }
+         return $list;
+//    $list = [];
+//        $db = Db::getInstance();
+//        $req = $db->query('SELECT * FROM post');
+//        // we create a list of Post objects from the database results
+//        foreach ($req->fetchAll() as $post) {
+//            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
+//        }
+//        return $list;
+//    }
+//        
+
 
 }
+
+
+//update by id
+    public static function update($id) {
+        $db = Db::getInstance();
+        $req = $db->prepare("Update user set username=:username, email=:email, image=:image  where id=:id");
+        $req->bindParam(':id', $id);
+        $req->bindParam(':username', $username);
+        $req->bindParam(':email', $email);
+        $req->bindParam(':image', $image);
+// set name and price parameters and execute
+        if (isset($_POST['username']) && $_POST['username'] != "") {
+            $filteredUserName = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['email'])) {
+            $filteredEmail = $_POST['email'];
+        }
+//        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+        $username = $filteredUserName;
+        $email = $filteredEmail;
+        $image = Post::updateFile($username);
+        $req->execute();
+        if (($_POST['username'] = "") && ($_POST['email'] = "")) {
+            return "null";
+        }
+    }
+
+
+
+}
+?>

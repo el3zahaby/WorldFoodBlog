@@ -3,10 +3,8 @@
 <?php foreach($users as $user) { ?>
   <p>
     <?php echo $user->username; ?> &nbsp; &nbsp;
-
-    <a href='?controller=user&action=read&id=<?php echo $user->username; ?>'>See user information </a> &nbsp; &nbsp;
-    <!--<a href='?controller=product&action=delete&id=  <?php // echo $user->username; ?>'>Delete Product</a> &nbsp; &nbsp;
-    <a href='?controller=product&action=update&id=<?php// echo $user->username; ?>'>Update Product</a> &nbsp;
-
-  </p>
+<a href='?controller=user&action=read&id=<?php echo $user->id; ?>'>See User information</a> &nbsp; &nbsp;
+    <a href='?controller=user&action=delete&id=<?php echo $user->id; ?>'>Delete User information</a> &nbsp; &nbsp;
+    <a href='?controller=user&action=update&id=<?php echo $user->id; ?>'>Update User information </a> &nbsp;
+   
 <?php } ?>

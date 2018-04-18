@@ -1,21 +1,25 @@
-<p>This is the requested users:</p>
-<?php echo "hiiii";  ?>
-<p>User ID: <?php echo $user->id; ?></p>
-<p>Username: <?php echo $user->username; ?></p>
-<p>User Type: £<?php echo $user->typeid; ?></p>
-<p>User Type: £<?php echo $user->image; ?></p>
+
+<style>
+    div.a {
+        text-align: center;
+    }
+    div.container{
+        margin: 10px;
+       
+   
+        
+        
+    }
+</style>
+<div  class = "container" id="get-data-form">
+<div class="a">
+    <h2><?php echo $user->username; ?></h2>
+
+    <p>Email: <?php echo $user->email; ?></p>
 
 
-<?php 
-$file = 'views/images/' . $user->username . '.jpeg';
-if(file_exists($file)){
-    $img = "<img src='$file' width='150' />";
-    echo $img;
-}
-else
-{
-echo "<img src='views/images/standard/_noproductimage.png' width='150' />";
-}
+    <p>Profile Picture: <?php echo $user->image; ?></p></div>
 
-?>
+   
+
 	
