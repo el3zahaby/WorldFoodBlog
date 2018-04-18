@@ -1,25 +1,32 @@
+<html>
 
-<style>
-    div.a {
+    <body><style>
+            div.a {
         text-align: center;
     }
     div.container{
-        margin: 10px;
+        margin: 3px;
        
-   
+     
         
         
     }
 </style>
-<div  class = "container" id="get-data-form">
-<div class="a">
-    <h2><?php echo $user->username; ?></h2>
+<div  class = "container" >
+        </style>
 
-    <p>Email: <?php echo $user->email; ?></p>
-
-
-    <p>Profile Picture: <?php echo $user->image; ?></p></div>
-
-   
-
-	
+<p>You have selected the  <?php echo $user-username; ?> User<p>
+    <?php
+    
+    foreach ($users as $user) { ?>
+  <p>
+<?php
+     echo "<a href='?controller=user&action=read&id=". $user->id  ."'><img src=" . $user->image. ' width="140" height="100"/> </a>'?> &nbsp; &nbsp;
+    <?php echo $post->title; ?> &nbsp; &nbsp;
+        <a class="btn btn-secondary active" href='?controller=user&action=read&id=<?php echo $user->id; ?>'>Read more</a> &nbsp; &nbsp;
+    <?php }?>
+<!--        echo $post->title;
+         echo $post->image . "<br>";-->
+    </div>
+  </body>
+</html>

@@ -1,37 +1,33 @@
 <?php
+require 'models/post.php';
 
 class User {
 
     // we define attributes
-    //public $id;
+    public $id;
     public $username;
     public $password;
     public $email;
-    public $image;
     public $create_date;
+    public $image;
+    
 
     // public $typeid;
     //public $create_date;
 
-    public function __construct($username, $password, $email, $image, $create_date) {
-        // $this->id    = $id;
+    public function __construct($id, $username, $password, $email,  $create_date, $image ) {
+        $this->id    = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
-        $this->image = $image;
         $this->create_date = $create_date;
+        $this->image = $image;
 
         //$this->typeid = $typeid;
         //$this->create_date = $create_date;
     }
 
-    public static function userModel($username) {
-        $this->username = $username;
-    }
-
-    public static function getUsername() {
-        return $this->username;
-    }
+   
 
 //
 //    public static function setUsername($username) {
@@ -46,7 +42,7 @@ class User {
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $user) {
 
-            $list[] = new User($user['username'], $user['password'], $user['email'], $user['image'], $user['create_date']);
+            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['image'], $user['create_date']);
         }
         return $list;
     }
@@ -115,64 +111,27 @@ $req->execute();
     public static function logout() {
         unset($_SESSION["username"]);
         session_destroy();
-        
+    }  
 
-  
-    }
-    
- public static function find($id) {
+  public static function find($id) {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare(' SELECT user.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
-FROM post
-INNER JOIN cuisine ON post.cuisine_id = cuisine.id
-WHERE post.id=:id; ');
+        $req = $db->prepare(' SELECT FROM * username
+INNER JOIN post ON post.user_id = username.id
+WHERE post.id = username.id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-        $post = $req->fetch();
-        if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+        $user = $req->fetch();
+        if ($user) {
+            return new User($user['id'], $user['username'],'','', $user['create_date'], $user['image'],$user['title']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
             throw new Exception('A real exception should go here');
         }
     }
-
-   public static function PostsByCuisine($cuisine_id) {
-
- $list = [];
-        $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $cuisine_id = intval($cuisine_id);
-        $req = $db->prepare('SELECT  post.image as image ,post.title as title, post.id as post_id FROM `cuisine` 
-inner join post on post.cuisine_id = cuisine.id
-where post.cuisine_id =:cuisine_id;');
-
-      //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('cuisine_id' => $cuisine_id));
-//          foreach ($req->fetchAll() as $post) {
-        $results = $req->fetchAll();
-        foreach ($results as $result) {
-             $list [] =new Post($result['post_id'], $result['title'], '',$result['image'], '', '','','',$cuisine_id);
-       
-        }
-         return $list;
-//    $list = [];
-//        $db = Db::getInstance();
-//        $req = $db->query('SELECT * FROM post');
-//        // we create a list of Post objects from the database results
-//        foreach ($req->fetchAll() as $post) {
-//            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
-//        }
-//        return $list;
-//    }
-//        
-
-
-}
-
+    
 
 //update by id
     public static function update($id) {
@@ -198,7 +157,7 @@ where post.cuisine_id =:cuisine_id;');
             return "null";
         }
     }
-
+    
 
 
 }

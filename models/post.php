@@ -87,8 +87,26 @@ where post.cuisine_id =:cuisine_id;');
 
 
 }
+  public static function PostsByContributor($user_id) {
 
+ $list = [];
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $user_id = intval($user_id);
+        $req = $db->prepare('SELECT * FROM `post` 
+inner join username on post.user_id = username.id
+where post.user_id = username.id');
 
+      //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('user_id' => $user_id));
+//          foreach ($req->fetchAll() as $post) {
+        $results = $req->fetchAll();
+        foreach ($results as $result) {
+          $list [] =new Post($result['post_id'], $result['title'], '',$result['image'], '', '','','',$user_id);
+       
+        }
+         return $list;
+  }
 //update by id
     public static function update($id) {
         $db = Db::getInstance();
