@@ -32,11 +32,17 @@
                                         <li><a href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
                                         <li><a href="#">By Contributors</a></li>
                                         <li><a href="#">Most Popular</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="#">Contact us</a></li>
+
                                          <li><a href="?controller=post&action=readAllPosts">All Recipes</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Contributors</a></li>
                                 <li><a href='?controller=user&action=readallusers'>All users</a></li>
+
                                
                             </ul>
                         </nav>
@@ -66,7 +72,7 @@
             <?php require_once('routes.php'); ?>
             </<div>
                 <div class="w3-container w3-gray">
-                    <footer >
+                    <div class="footer">
                         Copyright &COPY; <?= date('Y'); ?> || Follow us on our social media accounts:
                         <a class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
                         <!--Twitter-->
@@ -79,7 +85,7 @@
 
                         <!--Youtube-->
                         <a class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
-                    </footer>
+                   
                 </div>
 
                 </body>

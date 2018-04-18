@@ -29,16 +29,16 @@ function call($controller, $action) {
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
+
     'user' => ['register', 'login', 'logout'],
+
     'post' => ['readAllPosts', 'read', 'create', 'delete', 'update'],
-    'cuisine' => ['add', 'readAllCuisines'],
+    'cuisine' => [ 'readCuisine','readAllCuisines'],
 );
 
 
 
-// check that the requested controller and action are both allowed
-// if someone tries to access something else they will be redirected 
-// to the error action of the pages controller
+
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
         call($controller, $action);

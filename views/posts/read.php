@@ -1,19 +1,36 @@
 
+<style>
+    div.a {
+        text-align: center;
+    }
+    div.container{
+        margin: 10px;
+       
+   
+        
+        
+    }
+</style>
+<div  class = "container" id="get-data-form">
+<div class="a">
+    <h2><?php echo $post->title; ?></h2>
 
-<div  id="get-data-form">
+    <p>Date posted: <?php echo $post->DateAdded; ?></p>
 
- <p>Post title:I'm here<?php echo $post->title; ?></p>
-    <p>Date Posted:  <?php echo $post->DateAdded; ?></p>
-    <p>Post content: <?php echo $post->content; ?></p>
-     <p>Post cuisine: <?php echo $post->cuisine_id ; ?></p>
+
+    <p>Cuisine: <?php echo $post->cuisine_id; ?></p></div>
+
+    <p><?php echo $post->content; ?></p>
+
+
+
+    <?php
+//    $file = $post->image;
+//    if (file_exists($file)) {
+//        $img = "<img src='$file' width='150' />";
+//        echo $img;
+//    } else {
+//        echo "<img src='views/images/standard/_noproductimage.png' width='150' />";
+//    }
+    ?>
 </div>
-
-<?php
-$file = $post->image;
-if (file_exists($file)) {
-    $img = "<img src='$file' width='150' />";
-    echo $img;
-} else {
-    echo "<img src='views/images/standard/_noproductimage.png' width='150' />";
-}
-?>

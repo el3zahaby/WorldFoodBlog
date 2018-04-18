@@ -1,24 +1,27 @@
-<html><p>Here is a list of all posts:</p>
-<style>
-.floating-box {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    border: 1px solid #717068;  
-}
+
+    <html>  <style>
+        .floating-box {
+            display: inline-block;
+            width: 280px;
+            height: 250px;
+            margin: 10px;
+            border: 0px solid #717068;  
+        }
 
 
 
-</style>
-<div class="container">
-<?php 
-foreach($cuisine as $cuisine) {
-echo "<div class='floating-box'>". $cuisine->name . "</div>"; }
-    ?>
-</div>
-    
+    </style>
+    <div class="container">
+      <h2>All Cuisines</h2>
+        <?php
+//            <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; 
+
+        foreach ($cuisines as $cuisine) {?>
+      <div class='floating-box'> <?php echo $cuisine->name ?> <a href= '?controller=cuisine&action=readCuisine&id=<?php echo $cuisine->id ?>'> <img src= <?php echo $cuisine->image?>  width='290' height='200'>   </a> </div>
+     <?php   } ?>
+      
+    </div>
 
 
- 
+
 </html>
