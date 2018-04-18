@@ -6,9 +6,48 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="views/css/styles.css">
+        <style>
+
+            
+.navbar-custom {
+    color:  white;
+    background-color: #7F2989;
+    padding-top: 0.10;
+}
+p.serif {
+     font-family: Sans-Serif;
+    
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
 
 
+.navbar-brand,
+navbar-nav li a {
+    line-height: 10em;
+    height: 100em;
+    padding-top: 0;
+    text-align:center; 
+    display: inline-block;
+      margin: 1em;
+      
+}
+
+.footer {
+   position: absolute;
+
+   width: 100%;
+   background-color: #7F2989;
+   color: white;
+   text-align: center;
+}
+</style>
+
+
+  
         <title>Layout</title>
     </head>
     <body>
