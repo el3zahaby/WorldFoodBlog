@@ -7,11 +7,12 @@
     }
     div.container{
         margin: 1px;
-       
-     
-        
-        
     }
+/*    a {
+    color: black;
+    text-decoration: none;
+}*/
+
 </style>
 <div  class = "container" >
    <p>Here is a list of all posts:</p>

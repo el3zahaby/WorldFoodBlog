@@ -85,6 +85,7 @@ where post.cuisine_id =:cuisine_id;');
 
 }
 
+
 //update by id
     public static function update($id) {
         $db = Db::getInstance();

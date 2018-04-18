@@ -12,7 +12,7 @@
 
     </style>
     <div class="container">
-      <p>All Cuisines</p>
+      <h2>All Cuisines</h2>
         <?php
 //            <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; 
 

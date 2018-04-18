@@ -1,28 +1,17 @@
 
-html, body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Pangolin', cursive;
-}
-.w3-tangerine {
-    font-family: 'Tangerine', serif;
-}
-.w3-pacifico {
-    font-family: 'Pacifico', cursive;
-
-}
-
 
 .navbar-custom {
-    color:  #717068;
-    background-color: #FFFFFF;
+    color:  white;
+    background-color: #7F2989;
     padding-top: 0.10;
 }
 p.serif {
-    font-family: "Times New Roman", Times, serif;
+     font-family: Sans-Serif;
     
 }
 
 a {
-    color: #717068;
+    color: white;
     text-decoration: none;
 }
 
@@ -36,6 +25,15 @@ navbar-nav li a {
     display: inline-block;
       margin: 1em;
       
+}
+
+.footer {
+   position: absolute;
+
+   width: 100%;
+   background-color: #7F2989;
+   color: white;
+   text-align: center;
 }
 
 

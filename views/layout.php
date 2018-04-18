@@ -57,7 +57,7 @@
             <?php require_once('routes.php'); ?>
             </<div>
                 <div class="w3-container w3-gray">
-                    <footer >
+                    <div class="footer">
                         Copyright &COPY; <?= date('Y'); ?> || Follow us on our social media accounts:
                         <a class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
                         <!--Twitter-->
@@ -70,7 +70,7 @@
       
                         <!--Youtube-->
                         <a class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
-                    </footer>
+                   
                 </div>
 
                 </body>
