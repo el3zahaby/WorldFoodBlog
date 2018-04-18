@@ -1,11 +1,15 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
+
         <title>Blog Website</title>
 
+
     </head>
-    <body>
+        <body>
+        
         <?php
         require_once('connection.php');
 
@@ -21,4 +25,5 @@
         ?>
      
     </body>
+
 </html>
