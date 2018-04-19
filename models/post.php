@@ -2,8 +2,6 @@
 require_once('models/Exception.php');
 use function models\Exception\logException;
 
-
-
 class Post {
 
     // we define 3 attributes
@@ -34,6 +32,33 @@ class Post {
         }
         return $list;
     }
+        public static function PopularPosts() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
+inner join cuisine on post.cuisine_id = cuisine.id
+
+ORDER BY post.id ASC LIMIT 6 ;');
+        // we create a list of Post objects from the database results
+        foreach ($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+        }
+        return $list;
+    }
+           public static function RecentPosts() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
+inner join cuisine on post.cuisine_id = cuisine.id
+
+ORDER BY post.id DESC LIMIT 6 ;');
+        // we create a list of Post objects from the database results
+        foreach ($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+        }
+        return $list;
+    }
+   
 
     public static function find($id) {
         $db = Db::getInstance();
@@ -105,9 +130,11 @@ where post.cuisine_id =:cuisine_id;');
             $filteredContent = $_POST['content'];
         }
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+         $random =uniqid('image');
+         
         $title = $filteredTitle;
         $content = $filteredContent;
-        $image = Post::updateFile($title);
+        $image = Post::updateFile($random);
         $req->execute();
         if (($_POST['title'] = "") && ($_POST['content'] = "")) {
             return "null";
@@ -131,7 +158,8 @@ where post.cuisine_id =:cuisine_id;');
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = $_POST['content'];
         }
-        $random = (rand (1, 1000));
+        $random = uniqid('image');
+        
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         $title = $filteredTitle;
         $content = $filteredContent;

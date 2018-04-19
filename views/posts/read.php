@@ -1,36 +1,73 @@
 
 <style>
     div.a {
-        text-align: center;
+        
     }
     div.container{
         margin: 10px;
-       
-   
-        
-        
+
     }
+
+    .like, .dislike {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background: purple;
+        color: white;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        border-radius: 4px;
+    }
+    .qty1, .qty2 {
+        border: none;
+        width:20px;
+        background: transparent;
+    }
+    div.col-sm-11{
+        margin: 10px;
+
+    }
+
+
+
+
 </style>
-<div  class = "container" id="get-data-form">
-<div class="a">
-    <h2><?php echo $post->title; ?></h2>
+<bod>
 
-    <p>Date posted: <?php echo $post->DateAdded; ?></p>
+    <div  class = "container" id="get-data-form">
 
+        <div class="col-sm-9">
+            <div class="a">
+                <h2><?php echo $post->title; ?></h2>
 
-    <p>Cuisine: <?php echo $post->cuisine_id; ?></p></div>
-
-    <p><?php echo $post->content; ?></p>
-
+                <p>Date posted: <?php echo $post->DateAdded; ?></p>
 
 
-    <?php
-//    $file = $post->image;
-//    if (file_exists($file)) {
-//        $img = "<img src='$file' width='150' />";
-//        echo $img;
-//    } else {
-//        echo "<img src='views/images/standard/_noproductimage.png' width='150' />";
-//    }
-    ?>
-</div>
+                <p>Cuisine: <?php echo $post->cuisine_id; ?></p>
+
+                <p><?php echo $post->content; ?></p>
+
+
+
+            </div>
+        </div>
+
+        <div class="col-sm-11">
+
+            <h3>leave us a comment</h3>
+            <?php
+require_once('views/comments/add.php');?>
+
+        </div>
+
+
+
+
+    </div>
+</body>

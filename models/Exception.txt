@@ -1,229 +1,27 @@
-
-EXCEPTION CAUGHT: 2018-04-11 19:10:09 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(19)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:12:49 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(19)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:13:47 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(18)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:17:09 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(15)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:18:17 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(13)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:18:31 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(2)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:19:06 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(0)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:20:04 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(0)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:20:17 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:20:21 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:20:36 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:20:44 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:20:46 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(20)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:21:20 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(20)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:21:26 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(181): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:22:11 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('20')
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:22:23 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('21')
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:22:57 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('20')
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:22:59 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('21')
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:23:09 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('21')
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:24:35 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('21')
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:24:48 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:25:20 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(21)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:25:35 whoops
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(20)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#5 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:26:20 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idd' in 'where clause'
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(182): PDOStatement->execute(Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove(22)
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#6 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:28:20 SQLSTATE[HY000] [2002] No such file or directory
+EXCEPTION CAUGHT: 2018-04-19 06:49:35 SQLSTATE[HY000] [2002] No such file or directory
 #0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/connection.php(11): PDO->__construct('mysql:host=loca...', 'root', '', Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(177): DB::getInstance()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('22')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(250): DB::getInstance()
+#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(70): Post::remove('85')
+#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(26): PostController->delete()
+#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(43): call(Object(PostController), 'delete')
+#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(73): require_once('/Applications/X...')
+#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(23): require_once('/Applications/X...')
 #7 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:28:22 SQLSTATE[HY000] [2002] No such file or directory
+EXCEPTION CAUGHT: 2018-04-19 06:49:59 SQLSTATE[HY000] [2002] No such file or directory
 #0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/connection.php(11): PDO->__construct('mysql:host=loca...', 'root', '', Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(177): DB::getInstance()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('23')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(250): DB::getInstance()
+#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(70): Post::remove('85')
+#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(26): PostController->delete()
+#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(43): call(Object(PostController), 'delete')
+#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(73): require_once('/Applications/X...')
+#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(23): require_once('/Applications/X...')
 #7 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:28:22 SQLSTATE[HY000] [2002] No such file or directory
+EXCEPTION CAUGHT: 2018-04-19 06:54:04 SQLSTATE[HY000] [2002] No such file or directory
 #0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/connection.php(11): PDO->__construct('mysql:host=loca...', 'root', '', Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(177): DB::getInstance()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('23')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#7 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:28:22 SQLSTATE[HY000] [2002] No such file or directory
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/connection.php(11): PDO->__construct('mysql:host=loca...', 'root', '', Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(177): DB::getInstance()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('23')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
-#7 {main}
-EXCEPTION CAUGHT: 2018-04-11 19:28:26 SQLSTATE[HY000] [2002] No such file or directory
-#0 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/connection.php(11): PDO->__construct('mysql:host=loca...', 'root', '', Array)
-#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(177): DB::getInstance()
-#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(62): Post::remove('22')
-#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(23): PostController->delete()
-#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(39): call(Object(PostController), 'delete')
-#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(21): require_once('/Applications/X...')
-#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(19): require_once('/Applications/X...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/models/post.php(250): DB::getInstance()
+#2 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/controllers/post_controller.php(70): Post::remove('85')
+#3 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(26): PostController->delete()
+#4 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/routes.php(43): call(Object(PostController), 'delete')
+#5 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/views/layout.php(73): require_once('/Applications/X...')
+#6 /Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/index.php(23): require_once('/Applications/X...')
 #7 {main}

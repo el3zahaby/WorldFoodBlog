@@ -8,10 +8,7 @@
     div.container{
         margin: 1px;
     }
-/*    a {
-    color: black;
-    text-decoration: none;
-}*/
+
 
 </style>
 <div  class = "container" >
@@ -26,7 +23,7 @@
   <?php  echo "<a href='?controller=post&action=read&id=". $post->id  ."'><img src=" . $post->image. ' width="150" height="100"/> </a>'?> &nbsp; &nbsp;
 <?php echo $post->title; ?> &nbsp; &nbsp;
 
-    <a class="btn btn-secondary active" href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> &nbsp; &nbsp;
+    <a class="btn btn-secondary active"  href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> &nbsp; &nbsp;
     <?php
     if (isset($_SESSION['username'])) {   ?>
     <button class="btn btn-secondary active" value = "Delete" onclick="ConfirmDelete()">Delete Post</button> &nbsp; &nbsp;

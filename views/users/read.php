@@ -1,5 +1,5 @@
 <p>This is the requested users:</p>
-<?php echo "hiiii";  ?>
+<?php  ?>
 <p>User ID: <?php echo $user->id; ?></p>
 <p>Username: <?php echo $user->username; ?></p>
 <p>User Type: £<?php echo $user->typeid; ?></p>

@@ -11,20 +11,18 @@ class UserController {
         require_once ('views/users/readallusers.php');
     }
 
-
     public function read() {
-     
-      if (!isset($_GET['id']))
-        return call('pages', 'error');
 
-      try{
-      // we use the given id to get the correct post
-      $post = Post::find($_GET['id']);
-      require_once('views/cuisine/read.php');
-      }
- catch (Exception $ex){
-     return call('pages','error');
- }
+        if (!isset($_GET['id']))
+            return call('pages', 'error');
+
+        try {
+            // we use the given id to get the correct post
+            $post = Post::find($_GET['id']);
+            require_once('views/cuisine/read.php');
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }
     }
 
     public function register() {
@@ -36,9 +34,9 @@ class UserController {
             User::add();
             require_once('index.php');
         }
+    }
 
-}
- public function login() {
+    public function login() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             require_once('views/users/login.php');
@@ -47,20 +45,21 @@ class UserController {
             User::login();
             require_once('index.php');
         }
+    }
 
+    public function logout() {
+
+
+
+        User::logout();
+
+        header("location:index.php");
+    }
+
+    public function userAccount() {
+
+
+       require_once('views/users/userAccount.php');
+    }
 
 }
-
-public function logout() {
-
-
-
-            User::logout();
-   
-              header("location:index.php");
-
-
-}
-
-
-        }
