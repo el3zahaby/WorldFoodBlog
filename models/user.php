@@ -21,20 +21,6 @@ class User {
         //$this->create_date = $create_date;
     }
 
-    public static function userModel($username) {
-        $this->username = $username;
-    }
-
-    public static function getUsername() {
-        return $this->username;
-    }
-
-//
-//    public static function setUsername($username) {
-//        $this->username = $username;
-//    }
-
-
     public static function allusers() {
         $list = [];
         $db = Db::getInstance();
@@ -48,33 +34,32 @@ class User {
     }
 
     public static function add() {
-$db = Db::getInstance();
+        $db = Db::getInstance();
 //$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-$req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
-$req->bindParam(':username', $username);
-$req->bindParam(':email', $email);
-$req->bindParam(':password', $password);
+        $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
+        $req->bindParam(':username', $username);
+        $req->bindParam(':email', $email);
+        $req->bindParam(':password', $password);
 // set parameters and execute
-if(isset($_POST['username'])&& $_POST['username']!=""){
-$filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
-}
-if(isset($_POST['email'])&& $_POST['email']!=""){
-$filteredEmail = filter_input(INPUT_POST,'email', FILTER_SANITIZE_SPECIAL_CHARS);
-}
-if(isset($_POST['password'])&& $_POST['password']!=""){
-$filteredPassword = filter_input(INPUT_POST,'password');
-}
- 
-$username = $filteredUsername;
-$email = $filteredEmail;
-$password = $filteredPassword;
-$req->execute();
-}
+        if (isset($_POST['username']) && $_POST['username'] != "") {
+            $filteredUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['email']) && $_POST['email'] != "") {
+            $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+//        if (isset($_POST['password']) && $_POST['password'] != "") {
+//            $filteredPassword = filter_input(INPUT_POST, 'password');
+//        }
+        $password = $_POST['password'];
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+        $username = $filteredUsername;
+        $email = $filteredEmail;
+        $password = $hashed_password;
+        $req->execute();
+    }
 
     public static function login() {
-
-
         $db = Db::getInstance();
         if (isset($_POST['submit'])) {
             $sqlquery = "SELECT username, password from username WHERE username=:username AND password= :password";
@@ -89,32 +74,29 @@ $req->execute();
             );
 //if invalid user
             $count = $querystring->rowCount();
+        
             if ($count > 0) {
-
-
+               $password = $_SESSION['password'];
+               if( password_verify($_POST["password"], $_SESSION['password'])){
+                echo "yesssss";
                 $_SESSION["username"] = $username;
-
                 header("location:index.php");
             } else {
                 $result = '
        <div  style="margin-top: 2%;">
+        <div class="container">
             <div class="col-md-6 col-md-offset-3">  
                 <div class="row">
                     <div id="logo" class="text-center">
                         <h2>Whoops, you are not registered yet!</h2><p></p>
                     </div> </div> </div></div>';
-                echo "<h6>$result</h6>";
+                echo "<h6>$result</h6></div>" ;
             }
-        }
-    }
-
+        
+    }}}
     public static function logout() {
         unset($_SESSION["username"]);
         session_destroy();
-        
-
-  
     }
-    
 
 }
