@@ -76,7 +76,7 @@ navbar-nav li a {
                              
                                
                                 <li><a href="#">Contributors</a></li>
-                                <li><a href='?controller=user&action=readallusers'>All users</a></li>
+                                <li><a href='?controller=user&action=displayallusers'>All users</a></li>
 
                                
                             </ul>

@@ -70,7 +70,11 @@ public function logout() {
       $users = User::allusers();
       require_once('views/users/readallusers.php');
     }
-
+public function displayallusers() {
+      // we store all the posts in a variable
+      $users = User::allusers();
+      require_once('views/users/displayallusers.php');
+    }
     public function read() {
       // we expect a url of form ?controller=posts&action=show&id=x
       // without an id we just redirect to the error page as we need the post id to find it in the database
