@@ -2,7 +2,9 @@
     <html>  <style>
    img {
   border-radius: 50%;
-  width:200px
+
+        width: 50px;
+    height: 50px;
 }
 
         
