@@ -19,20 +19,17 @@ class PostController {
             // we use the given id to get the correct post
 
             $post = Post::find($_GET['id']);
-              $comments = Comment::allComments();
-            //$comments = Comment::find(['id']);
+//             $post = Post::findComment($_GET['id']);
+//              $comments = Comment::allComments();
+            $comments = Comment::findByPostId($_GET['id']);
 //      $postsForCuisine = Post::PostsByCuisine($_GET['id']);
             require_once('views/posts/read.php');
-
-
-//          
-
-
 
 
             if (isset($_POST['submit'])) {
 
                 Comment::addComment();
+        
             }
         }
     }

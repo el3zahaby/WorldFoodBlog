@@ -1,10 +1,4 @@
 
-<!--    <a class="like"><i class="fa fa-thumbs-o-up"></i>  
- Like <input class="qty1" name="qty1" readonly="readonly" type="text" value="0" />
-</a>
-<a class="dislike"><i class="fa fa-thumbs-o-down"></i> 
- Dislike <input class="qty2"  name="qty2" readonly="readonly" type="text" value="0" />
-</a>-->
 
 <!--     <div class="form-group">
                    <div name="post_id" id='cmntbox'><?php 
@@ -31,6 +25,11 @@
     font-weight: normal;
     margin-right: 14px;
 }</style>
+
+    <a class="like"><i class="fa fa-thumbs-o-up"></i>  
+ Like <input class="qty1" name="qty1" readonly="readonly" type="text" value="0" />
+</a>
+
         
 <form  method="POST" >
         
@@ -82,6 +81,6 @@
                     <p>  Date posted: <?php echo $comment->date_posted;?></p>
                  
                 </div>
-</div><br>
+</div>
 <?php }?>
 

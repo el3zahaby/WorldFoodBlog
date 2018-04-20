@@ -64,10 +64,10 @@
             <?php
 require_once('views/comments/add.php');?>
 
-        </div>
+    
 
 
 
-
+    </div>
     </div>
 </body>

@@ -56,27 +56,25 @@ Class Comment {
     public static function allComments() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM comment  ORDER BY comment.id DESC limit 6;');
+        $req = $db->query('SELECT * FROM comment inner join post where comment.post_id = post.id  ORDER BY comment.id DESC limit 6;');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $comment) {
             $list[] = new Comment($comment['id'], $comment['name'], $comment['email'], $comment['comment'], $comment['post_id'], $comment['date_posted']);
         }
         return $list;
     }
-  public static function find($post_id) {
+    
+  public static function findByPostId($post_id) {
+       $list = [];
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
-        $id = intval($id);
+        $post_id = intval($post_id);
         $req = $db->prepare('select * from comment where post_id = :post_id; ');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('post_id' => $post_id));
-        $result = $req->fetch();
-        if ($result) {
-            return new  Comment($comment['id'], $comment['name'], $comment['email'], $comment['comment'], $comment['post_id'], $comment['date_posted']);
-        } else {
-            //replace with a more meaningful exception
-            //post with that id not found
-            throw new Exception('A real exception should go here');
-        }
+      foreach ($req->fetchAll() as $comment) {
+          
+             $list[]= new  Comment($comment['id'], $comment['name'], $comment['email'], $comment['comment'], $comment['post_id'], $comment['date_posted']);
+      } return $list ;  
     }
 }
