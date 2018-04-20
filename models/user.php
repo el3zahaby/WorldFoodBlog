@@ -29,14 +29,14 @@ class User {
    public static function all() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM usermame');
+        $req = $db->query('SELECT * FROM username');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $user) {
-            $list[] = new User($user['id'], $user['username'], $user[''], $user[''], $user['create_date'], $user['image']);
+            $list[] = new User($user['id'], $user['username'], $user['image']);
         }
         return $list;
     }
-
+       
 
 
     public static function allusers() {
@@ -121,20 +121,22 @@ $req->execute();
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare(' SELECT * FROM post
-INNER JOIN username ON post.user_id = username.id
-WHERE post.user_id = : username.id');
+        $req = $db->prepare(' SELECT * FROM username
+where id =:id;');
+
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-        $user = $req->fetch();
-        if ($user) {
-            return new User($user['id'], $user['username'],'','', $user['create_date'], $user['image'],$user['title']);
+        $result = $req->fetch();
+        if ($result) {
+            return new User($result['id'], $result['username'],'','', $result['create_date'], $result['image']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
             throw new Exception('A real exception should go here');
         }
     }
+
+    
     
 
 //update by id

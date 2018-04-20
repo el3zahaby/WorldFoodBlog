@@ -1,6 +1,7 @@
 <?php
 require 'models/cuisine.php';
 
+
 class PostController {
     public function readAllPosts() {
       // we store all the posts in a variable

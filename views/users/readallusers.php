@@ -1,28 +1,29 @@
 
     <html>  <style>
-   img {
+  .floating-box {
+            display: inline-block;
+          
+            margin: 10px;
+            border: 0px solid #717068;  
+        }
+
+        img {
   border-radius: 50%;
-
-        width: 50px;
-    height: 50px;
+  margin-left: 40px;
+  margin-right: 30px;
 }
-
-        
-
-
-
-    </style>
+</style>
     <div class="container">
-      <h2>See recipes by contributor</h2>
+      <h2>All Contributors</h2>
+      
         <?php
-//            <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; 
-
         foreach ($users as $user) {?>
-      <div class='floating-box'> <a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?>   width='290' height='200'>   </a><?php echo $user->username ?> </div>
+      <div class='floating-box'> <?php echo $user->username ?> <br> <a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?> width='200' height='190' > </a> </div>
      <?php   } ?>
       
     </div>
 
 
-
 </html>
+
+      

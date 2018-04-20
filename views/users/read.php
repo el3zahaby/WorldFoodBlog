@@ -15,15 +15,15 @@
 <div  class = "container" >
         </style>
 
-<p>You have selected the  <?php echo $user->username; ?> User<p>
+<p>By <?php echo $user->username; ?> <p>
     <?php
     
-    foreach ($users as $user) { ?>
+    foreach ($postsForContributor as $post) { ?>
   <p>
 <?php
-     echo "<a href='?controller=user&action=read&id=". $user->id  ."'><img src=" . $user->image. ' width="140" height="100"/> </a>'?> &nbsp; &nbsp;
-    <?php echo $user->username; ?> &nbsp; &nbsp;
-        <a class="btn btn-secondary active" href='?controller=user&action=read&id=<?php echo $user->id; ?>'>Read more</a> &nbsp; &nbsp;
+     echo "<a href='?controller=post&action=read&id=". $post->id  ."'><img src=" . $post->image. ' width="140" height="100"/> </a>'?> &nbsp; &nbsp;
+    <?php echo $post->title; ?> &nbsp; &nbsp;
+        <a class="btn btn-secondary active" href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> &nbsp; &nbsp;
     <?php }?>
 <!--        echo $post->title;
          echo $post->image . "<br>";-->

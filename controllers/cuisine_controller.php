@@ -8,6 +8,7 @@ Class CuisineController {
       $cuisines = Cuisine::all();
       require_once('views/cuisines/readAllCuisines.php');
     }
+
     public function readCuisine() {
       // we expect a url of form ?controller=posts&action=show&id=x
       // without an id we just redirect to the error page as we need the post id to find it in the database
@@ -16,7 +17,7 @@ Class CuisineController {
 
       try{
       // we use the given id to get the correct post
-        $cuisine= Cuisine::find($_GET['id']);
+        $cuisine = Cuisine::find($_GET['id']);
    
       $postsForCuisine = Post::PostsByCuisine($_GET['id']);
       require_once('views/cuisines/readCuisine.php');

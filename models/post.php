@@ -1,8 +1,8 @@
 <?php
+
 require_once('models/Exception.php');
+
 use function models\Exception\logException;
-
-
 
 class Post {
 
@@ -12,14 +12,16 @@ class Post {
     public $content;
     public $image;
     public $DateAdded;
+    public $user_id;
     public $cuisine_id;
 
-    public function __construct($id, $title, $content, $image, $DateAdded, $cuisine_id) {
+    public function __construct($id, $title, $content, $image, $DateAdded, $user_id, $cuisine_id) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->image = $image;
         $this->DateAdded = $DateAdded;
+        $this->user_id = $user_id;
         $this->cuisine_id = $cuisine_id;
     }
 
@@ -30,7 +32,7 @@ class Post {
         $req = $db->query('SELECT * FROM post');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['user_id'], $post['cuisine_id']);
         }
         return $list;
     }
@@ -39,7 +41,7 @@ class Post {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare(' SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
+        $req = $db->prepare(' SELECT *
 FROM post
 INNER JOIN cuisine ON post.cuisine_id = cuisine.id
 WHERE post.id=:id; ');
@@ -47,7 +49,7 @@ WHERE post.id=:id; ');
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['user_id']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
@@ -55,9 +57,9 @@ WHERE post.id=:id; ');
         }
     }
 
-   public static function PostsByCuisine($cuisine_id) {
+    public static function PostsByCuisine($cuisine_id) {
 
- $list = [];
+        $list = [];
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $cuisine_id = intval($cuisine_id);
@@ -65,48 +67,36 @@ WHERE post.id=:id; ');
 inner join post on post.cuisine_id = cuisine.id
 where post.cuisine_id =:cuisine_id;');
 
-      //the query was prepared, now replace :id with the actual $id value
+        //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('cuisine_id' => $cuisine_id));
 //          foreach ($req->fetchAll() as $post) {
         $results = $req->fetchAll();
         foreach ($results as $result) {
-             $list [] =new Post($result['post_id'], $result['title'], '',$result['image'], '', '','','',$cuisine_id);
-       
+            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', '', $cuisine_id);
         }
-         return $list;
-//    $list = [];
-//        $db = Db::getInstance();
-//        $req = $db->query('SELECT * FROM post');
-//        // we create a list of Post objects from the database results
-//        foreach ($req->fetchAll() as $post) {
-//            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
-//        }
-//        return $list;
-//    }
-//        
+        return $list;
+    }
 
+    public static function PostsByContributor($user_id) {
 
-}
-  public static function PostsByContributor($user_id) {
-
- $list = [];
+        $list = [];
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $user_id = intval($user_id);
-        $req = $db->prepare('SELECT * FROM `post` 
-inner join username on post.user_id = username.id
-where post.user_id = username.id');
+        $req = $db->prepare('SELECT  post.image as image ,post.title as title, post.id as post_id FROM `username` 
+inner join post on post.user_id = username.id
+where post.user_id = :user_id; ');
 
-      //the query was prepared, now replace :id with the actual $id value
+        //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('user_id' => $user_id));
 //          foreach ($req->fetchAll() as $post) {
         $results = $req->fetchAll();
         foreach ($results as $result) {
-          $list [] =new Post($result['post_id'], $result['title'], '',$result['image'], '', '','','',$user_id);
-       
+            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '',  $user_id,'');
         }
-         return $list;
-  }
+        return $list;
+    }
+
 //update by id
     public static function update($id) {
         $db = Db::getInstance();
@@ -149,7 +139,7 @@ where post.user_id = username.id');
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = $_POST['content'];
         }
-        $random = (rand (1, 1000));
+        $random = (rand(1, 1000));
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         $title = $filteredTitle;
         $content = $filteredContent;
@@ -236,20 +226,18 @@ where post.user_id = username.id');
 
 
         try {
-        
+
             $db = Db::getInstance();
             //make sure $id is an integer
             $id = intval($id);
-           $req = $db->prepare('delete FROM post WHERE id = :id');
+            $req = $db->prepare('delete FROM post WHERE id = :id');
             // the query was prepared, now replace :id with the actual $id value
-                   $req->execute(array('id' => $id));
-
+            $req->execute(array('id' => $id));
         } catch (Exception $e) {
-       
-           call('pages', 'error');
+
+            call('pages', 'error');
             logException($e);
             die("");
-         
         }
 
         $db = Db::getInstance();
@@ -258,7 +246,6 @@ where post.user_id = username.id');
         $req = $db->prepare('delete FROM post WHERE id = :id');
         // the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-
     }
 
 }
