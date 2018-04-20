@@ -59,11 +59,8 @@
                         input.val(parseInt(input.val()) + 1);
 
                     });
-                    $(".dislike").click(function () {
-                        var input = $(this).find('.qty2');
-                        input.val(input.val() - 1);
-                    });
-                });
+                    
+                  
             </script>
    <h3>Comments</h3>
 
@@ -80,7 +77,9 @@
                     <p>Comment: <?php echo $comment->comment;?></p>
                     <p>  Date posted: <?php echo $comment->date_posted;?></p>
                  
-                </div>
-</div>
-<?php }?>
+             
 
+<?php }?>
+                       </div>
+</div>
+</div>

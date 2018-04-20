@@ -52,17 +52,17 @@ Class Comment {
         $req->execute();
 //upload post image
     }
-
-    public static function allComments() {
-        $list = [];
-        $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM comment inner join post where comment.post_id = post.id  ORDER BY comment.id DESC limit 6;');
-        // we create a list of Post objects from the database results
-        foreach ($req->fetchAll() as $comment) {
-            $list[] = new Comment($comment['id'], $comment['name'], $comment['email'], $comment['comment'], $comment['post_id'], $comment['date_posted']);
-        }
-        return $list;
-    }
+//
+//    public static function allComments() {
+//        $list = [];
+//        $db = Db::getInstance();
+//        $req = $db->query('SELECT * FROM comment inner join post where comment.post_id = post.id  ORDER BY comment.id DESC limit 6;');
+//        // we create a list of Post objects from the database results
+//        foreach ($req->fetchAll() as $comment) {
+//            $list[] = new Comment($comment['id'], $comment['name'], $comment['email'], $comment['comment'], $comment['post_id'], $comment['date_posted']);
+//        }
+//        return $list;
+//    }
     
   public static function findByPostId($post_id) {
        $list = [];
