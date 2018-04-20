@@ -2,8 +2,6 @@
 require_once('models/Exception.php');
 use function models\Exception\logException;
 
-
-
 class Post {
 
     // we define 3 attributes
@@ -34,15 +32,44 @@ class Post {
         }
         return $list;
     }
+        public static function PopularPosts() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
+inner join cuisine on post.cuisine_id = cuisine.id
+
+ORDER BY post.id ASC LIMIT 6 ;');
+        // we create a list of Post objects from the database results
+        foreach ($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+        }
+        return $list;
+    }
+           public static function RecentPosts() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
+inner join cuisine on post.cuisine_id = cuisine.id
+
+ORDER BY post.id DESC LIMIT 6 ;');
+        // we create a list of Post objects from the database results
+        foreach ($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+        }
+        return $list;
+    }
+   
 
     public static function find($id) {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare(' SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
+        $req = $db->prepare('
+SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
 FROM post
 INNER JOIN cuisine ON post.cuisine_id = cuisine.id
 WHERE post.id=:id; ');
+        
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
@@ -54,6 +81,27 @@ WHERE post.id=:id; ');
             throw new Exception('A real exception should go here');
         }
     }
+      public static function findComment($id) {
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $id = intval($id);
+        $req = $db->prepare('
+ SELECT * FROM comment inner join post where comment.post_id = :id  ORDER BY comment.id DESC limit 6; ');
+        
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+        $post = $req->fetch();
+        if ($post) {
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'],$post['comment']);
+        } else {
+            //replace with a more meaningful exception
+            //post with that id not found
+            throw new Exception('A real exception should go here');
+        }
+    }
+    
+    
+    
 
    public static function PostsByCuisine($cuisine_id) {
 
@@ -105,9 +153,11 @@ where post.cuisine_id =:cuisine_id;');
             $filteredContent = $_POST['content'];
         }
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+         $random =uniqid('image');
+         
         $title = $filteredTitle;
         $content = $filteredContent;
-        $image = Post::updateFile($title);
+        $image = Post::updateFile($random);
         $req->execute();
         if (($_POST['title'] = "") && ($_POST['content'] = "")) {
             return "null";
@@ -131,7 +181,8 @@ where post.cuisine_id =:cuisine_id;');
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = $_POST['content'];
         }
-        $random = (rand (1, 1000));
+        $random = uniqid('image');
+        
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         $title = $filteredTitle;
         $content = $filteredContent;
@@ -186,7 +237,8 @@ where post.cuisine_id =:cuisine_id;');
 
     public static function updateFile(string $imageFileName) {
         if ($_FILES[self::InputKeys] == "") {
-            return "null";
+            
+        return $imagePath;
         }
 
         if (empty($_FILES[self::InputKeys])) {

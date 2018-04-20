@@ -1,40 +1,46 @@
+html, h1, h2, h3, h4, h5, h6 ,a,glyphicon{
+  font-family: "Comic Sans MS", cursive, sans-serif; 
+/*    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+}
+.w3-tangerine {
+  font-family: 'Tangerine', serif;
+}
+.w3-pacifico {
+    font-family: 'Pacifico', cursive;
+}
 
+navbar navbar-light{
 
-.navbar-custom {
-    color:  white;
-    background-color: #7F2989;
+    /*    background-color: #7F2989;*/
     padding-top: 0.10;
 }
 p.serif {
-     font-family: Sans-Serif;
-    
+    font-family: Sans-Serif;
+
 }
 
-a {
+nav ul li a{
     color: white;
-    text-decoration: none;
-}
+}    
 
 
-.navbar-brand,
-navbar-nav li a {
-    line-height: 10em;
-    height: 100em;
-    padding-top: 0;
-    text-align:center; 
-    display: inline-block;
-      margin: 1em;
-      
+
+
+a{
+    color: black;
 }
+
 
 .footer {
-   position: absolute;
+    position: absolute;
 
-   width: 100%;
-   background-color: #7F2989;
-   color: white;
-   text-align: center;
+
+    width: 100%;
+    background-color: #7F2989;
+    color: white;
+    text-align: center;
 }
+.footer a{
 
-
-  
+    color: white;
+}

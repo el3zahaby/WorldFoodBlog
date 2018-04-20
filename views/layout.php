@@ -8,24 +8,26 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="views/css/styles.css">
 
-
         <title>Layout</title>
     </head>
     <body>
-        <nav class="navbar-custom ">
+        <nav class="navbar navbar-light" style="background-color: #7F2989" >
 
             <div class="container">
                 <div class="navbar-header">
                     <div class="serif">
-                        <nav>                     
-                            <ul class="nav navbar-nav">
-                                <li    <a <img src="views/images/Delicious.png"  width="120" height="100" alt="">     
+                        <nav>        
+                            
+                            <div class="nav-link">
+                            <ul class="nav navbar-nav" >
+                                <li    <a  <img src="views/images/Delicious.png"  width="120" height="100" alt="">     
                                     </a></li>
-                                <li class="active">    <a href='/WorldFoodBlog'>Home</a></li>
+
+                                <li class="active">    <a href='index.php'>Home</a></li>
 
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Recipes <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
+                                        <li><a  href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
                                         <li><a href="#">By Contributors</a></li>
                                         <li><a href="#">Most Popular</a></li>
 
@@ -38,9 +40,9 @@
                                
                                 <li><a href="#">Contributors</a></li>
                                 <li><a href='?controller=user&action=readallusers'>All users</a></li>
-
-                               
-                            </ul>
+    </ul>
+                        </div>
+                        
                         </nav>
 
                     </div>
@@ -70,19 +72,22 @@
                 <div class="w3-container w3-gray">
                     <div class="footer">
                         Copyright &COPY; <?= date('Y'); ?> || Follow us on our social media accounts:
-                        <a class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
+                        <a href="#" class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
                         <!--Twitter-->
-                        <a class="tw-ic mr-3"><i class="fa fa-lg fa-twitter"> </i></a>
+                        <a href="#" class="tw-ic mr-3"><i class="fa fa-lg fa-twitter"> </i></a>
 
                         <!--Instagram-->
-                        <a class="ins-ic mr-3"><i class="fa fa-lg fa-instagram"> </i></a>
+                        <a href="#" class="ins-ic mr-3"><i class="fa fa-lg fa-instagram"> </i></a>
                         <!--Pinterest-->
-                        <a class="pin-ic mr-3"><i class="fa fa-lg fa-pinterest"> </i></a>
+                        <a href="#" class="pin-ic mr-3"><i class="fa fa-lg fa-pinterest"> </i></a>
 
                         <!--Youtube-->
-                        <a class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
+                        <a href="#" class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
                    
                 </div>
+                    <script>
+
+</script>
 
                 </body>
                 </html>

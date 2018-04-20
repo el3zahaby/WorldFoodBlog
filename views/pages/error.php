@@ -1,5 +1,5 @@
 <div class="w3-container w3-red">
-<p>Oops, this is the error page.</p>
-<img src="views/images/standard/_errorimage.jpg" width="150" />
-<p>It looks like something went wrong :(</p>
+<h1>Sorry! its not you its us! W'ill be fixing the bug soon :D</h1>
+<img src="views/images/cutecat.jpg" width="150" />
+
 </div>
