@@ -1,6 +1,7 @@
 <?php
 
 require 'models/user.php';
+require 'models/post.php';
 
 class UserController {
 
@@ -70,12 +71,26 @@ public function logout() {
       $users = User::allusers();
       require_once('views/users/readallusers.php');
     }
-public function displayallusers() {
-      // we store all the posts in a variable
-      $users = User::allusers();
-      require_once('views/users/displayallusers.php');
-    }
-    public function read() {
+
+//    public function read() {
+//      // we expect a url of form ?controller=posts&action=show&id=x
+//      // without an id we just redirect to the error page as we need the post id to find it in the database
+//      if (!isset($_GET['id']))
+//        return call('pages', 'error');
+//
+//      try{
+//      // we use the given id to get the correct post
+//        $cuisine= Cuisine::find($_GET['id']);
+//   
+//      $postsForCuisine = Post::PostsByCuisine($_GET['id']);
+//      require_once('views/cuisines/readCuisine.php');
+//      }
+// catch (Exception $ex){
+//     return call('pages','error');
+// }
+//    }
+    
+    public function readContributor() {
       // we expect a url of form ?controller=posts&action=show&id=x
       // without an id we just redirect to the error page as we need the post id to find it in the database
       if (!isset($_GET['id']))
@@ -84,13 +99,20 @@ public function displayallusers() {
       try{
       // we use the given id to get the correct post
       $user = User::find($_GET['id']);
+      $postForContributor = Post::PostsByContributor($_GET['id']);
       require_once('views/users/read.php');
       }
  catch (Exception $ex){
      return call('pages','error');
  }
-
     }
+ public function displayallusers() {
+      // we store all the posts in a variable
+      $users = User::allusers();
+      require_once('views/users/displayallusers.php');
+    }
+
+    
 
     public function update() {
         

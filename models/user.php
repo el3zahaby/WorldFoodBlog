@@ -1,5 +1,4 @@
 <?php
-require 'models/post.php';
 
 class User {
 
@@ -122,9 +121,9 @@ $req->execute();
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare(' SELECT FROM * username
-INNER JOIN post ON post.user_id = username.id
-WHERE post.id = username.id');
+        $req = $db->prepare(' SELECT * FROM post
+INNER JOIN username ON post.user_id = username.id
+WHERE post.user_id = : username.id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $user = $req->fetch();
