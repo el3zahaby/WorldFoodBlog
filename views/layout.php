@@ -65,7 +65,7 @@ navbar-nav li a {
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Recipes <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href='?controller=cuisine&action=readAllCuisines'>By Cuisine</a></li>
-                                        <li><a href="#">By Contributors</a></li>
+                                        <li><a href="?controller=user&action=readallusers">By Contributors</a></li>
                                         <li><a href="#">Most Popular</a></li>
 
                                     </ul>

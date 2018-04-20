@@ -1,12 +1,11 @@
 
     <html>  <style>
-        .floating-box {
-            display: inline-block;
-            width: 280px;
-            height: 250px;
-            margin: 10px;
-            border: 0px solid #717068;  
-        }
+   img {
+  border-radius: 50%;
+  width:200px
+}
+
+        
 
 
 
@@ -17,7 +16,7 @@
 //            <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; 
 
         foreach ($users as $user) {?>
-      <div class='floating-box'> <?php echo $user->username ?> <a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?>  width='290' height='200'>   </a> </div>
+      <div class='floating-box'> <a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?>   width='290' height='200'>   </a><?php echo $user->username ?> </div>
      <?php   } ?>
       
     </div>

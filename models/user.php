@@ -27,12 +27,17 @@ class User {
         //$this->create_date = $create_date;
     }
 
-   
+   public static function all() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM usermame');
+        // we create a list of Post objects from the database results
+        foreach ($req->fetchAll() as $user) {
+            $list[] = new User($user['id'], $user['username'], $user[''], $user[''], $user['create_date'], $user['image']);
+        }
+        return $list;
+    }
 
-//
-//    public static function setUsername($username) {
-//        $this->username = $username;
-//    }
 
 
     public static function allusers() {
@@ -42,7 +47,7 @@ class User {
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $user) {
 
-            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['image'], $user['create_date']);
+            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['create_date'], $user['image'] );
         }
         return $list;
     }
