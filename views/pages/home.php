@@ -110,7 +110,7 @@
      <div class="figure">  
 
   <?php  echo "<a href='?controller=post&action=read&id=". $post->id  ."'><img src=" . $post->image. ' width="260" height="180"/> </a>'?> &nbsp; &nbsp;
-  <div class="caption"> <p><?php echo $post->title; ?> - By: Amber<p><?php echo $post->cuisine_id;?> Cuisine</p1></div>
+  <div class="caption"> <p><?php echo $post->title; ?> - By: <?php echo $post->user_id; ?><p><?php echo $post->cuisine_id;?> Cuisine</p1></div>
    </div>
     <?php }?> 
   
@@ -121,7 +121,7 @@
      <div class="figure2">  
 
   <?php  echo "<a href='?controller=post&action=read&id=". $post->id  ."'><img src=" . $post->image. ' width="500" height="300"/> </a>'?> &nbsp; &nbsp;
-<div class="caption"> <p><?php echo $post->title; ?> - By: Amber<p><?php echo $post->cuisine_id;?> Cuisine</p1></div>
+<div class="caption"> <p><?php echo $post->title; ?> - By: <?php echo $post->user_id; ?><p><?php echo $post->cuisine_id;?> Cuisine</p1></div>
    </div>
     <?php }?> 
 </div>
