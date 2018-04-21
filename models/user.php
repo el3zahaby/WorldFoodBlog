@@ -3,23 +3,40 @@
 class User {
 
     // we define attributes
-    //public $id;
+    public $id;
     public $username;
     public $password;
     public $email;
+    public $create_date;
+    public $image;
 
-    // public $typeid;
-    //public $create_date;
 
-    public function __construct($username, $password, $email) {
-        // $this->id    = $id;
+  
+    public function __construct($id, $username, $password, $email,  $create_date, $image ) {
+        $this->id    = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
+        $this->create_date = $create_date;
+        $this->image = $image;
 
-        //$this->typeid = $typeid;
-        //$this->create_date = $create_date;
+   
     }
+    
+    ====
+        
+   public static function all() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM username');
+        // we create a list of Post objects from the database results
+        foreach ($req->fetchAll() as $user) {
+            $list[] = new User($user['id'], $user['username'], $user['image']);
+        }
+        return $list;
+    }
+       
+
 
     public static function allusers() {
         $list = [];
@@ -28,10 +45,11 @@ class User {
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $user) {
 
-            $list[] = new User($user['username'], $user['password'], $user['email']);
+            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['create_date'], $user['image'] );
         }
         return $list;
     }
+
 
     public static function add() {
         $db = Db::getInstance();
@@ -107,4 +125,56 @@ class User {
         session_destroy();
     }
 
+
+  public static function find($id) {
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $id = intval($id);
+        $req = $db->prepare(' SELECT * FROM username
+where id =:id;');
+
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+        $result = $req->fetch();
+        if ($result) {
+            return new User($result['id'], $result['username'],'','', $result['create_date'], $result['image']);
+        } else {
+            //replace with a more meaningful exception
+            //post with that id not found
+            throw new Exception('A real exception should go here');
+        }
+    }
+
+    
+    
+
+//update by id
+    public static function update($id) {
+        $db = Db::getInstance();
+        $req = $db->prepare("Update user set username=:username, email=:email, image=:image  where id=:id");
+        $req->bindParam(':id', $id);
+        $req->bindParam(':username', $username);
+        $req->bindParam(':email', $email);
+        $req->bindParam(':image', $image);
+// set name and price parameters and execute
+        if (isset($_POST['username']) && $_POST['username'] != "") {
+            $filteredUserName = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['email'])) {
+            $filteredEmail = $_POST['email'];
+        }
+//        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+        $username = $filteredUserName;
+        $email = $filteredEmail;
+        $image = Post::updateFile($username);
+        $req->execute();
+        if (($_POST['username'] = "") && ($_POST['email'] = "")) {
+            return "null";
+        }
+    }
+    
+
+
 }
+?>
+
