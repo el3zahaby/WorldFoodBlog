@@ -8,7 +8,9 @@
             div.container{
                 margin: 1px;
             }
-
+            .btn{
+                font-family: "Comic Sans MS", cursive, sans-serif; 
+            }
 
         </style>
         <div  class = "container" > <div class="col-md-7"> 
@@ -23,10 +25,10 @@
 
                         <tr>    <td>      <?php echo "<a href='?controller=post&action=read&id=" . $post->id . "'><img src=" . $post->image . ' width="150" height="100"/> </a>' ?></td> 
                             <td>   <?php echo $post->title; ?> </td>
-                            <td> <a class="btn btn-secondary active"  href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> </td>
+                            <td> <a class="btn btn-default"  href='?controller=post&action=read&id=<?php echo $post->id; ?>'>Read more</a> </td>
                             <?php if (isset($_SESSION['username'])) { ?>
-                                <td>       <button class="btn btn-secondary active" value = "Delete" onclick="ConfirmDelete()">Delete Post</button> </td>
-                                <td>    <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; ?>> '>Update Post</a> </td>
+                                <td>       <button class="btn btn-default" value = "Delete" onclick="ConfirmDelete()">Delete Post</button> </td>
+                                <td>    <a class="btn btn-default" href='?controller=post&action=update&id=<?php echo $post->id; ?>> '>Update Post</a> </td>
                             <?php } ?> 
                             </p>
 
