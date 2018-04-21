@@ -39,8 +39,8 @@
                                          <li><a href="?controller=post&action=readAllPosts">All Recipes</a></li>
                 
 
-    <li><a href="#">Contributors</a></li>
-                                <li><a href='?controller=user&action=displayallusers'>All users</a></li>
+   
+                                <li><a href='?controller=user&action=displayallusers'>Blog members</a></li>
 
     </ul>
                         </div>

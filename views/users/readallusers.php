@@ -1,12 +1,29 @@
-<p>Here is a list of all users:</p>
 
-<?php foreach($users as $user) { ?>
-  <p>
-    <?php echo $user->username; ?> &nbsp; &nbsp;
+    <html>  <style>
+  .floating-box {
+            display: inline-block;
+          
+            margin: 10px;
+            border: 0px solid #717068;  
+        }
 
-    <a href='?controller=user&action=read&id=<?php echo $user->username; ?>'>See user information </a> &nbsp; &nbsp;
-    <!--<a href='?controller=product&action=delete&id=  <?php // echo $user->username; ?>'>Delete Product</a> &nbsp; &nbsp;
-    <a href='?controller=product&action=update&id=<?php// echo $user->username; ?>'>Update Product</a> &nbsp;
+        img {
+  border-radius: 50%;
+  margin-left: 40px;
+  margin-right: 30px;
+}
+</style>
+    <div class="container">
+      <h2>All Contributors</h2>
+      
+        <?php
+        foreach ($users as $user) {?>
+      <div class='floating-box'> <?php echo $user->username ?> <br> <a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?> width='200' height='190' > </a> </div>
+     <?php   } ?>
+      
+    </div>
 
-  </p>
-<?php } ?>
+
+</html>
+
+      
