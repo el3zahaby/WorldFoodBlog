@@ -1,5 +1,7 @@
 <?php
+
 require_once('models/Exception.php');
+
 use function models\Exception\logException;
 
 class Post {
@@ -32,7 +34,8 @@ class Post {
         }
         return $list;
     }
-        public static function PopularPosts() {
+
+    public static function PopularPosts() {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
@@ -45,7 +48,8 @@ ORDER BY post.id ASC LIMIT 6 ;');
         }
         return $list;
     }
-           public static function RecentPosts() {
+
+    public static function RecentPosts() {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
@@ -59,7 +63,7 @@ ORDER BY post.id DESC LIMIT 6 ;');
         return $list;
     }
 
-           public static function PostsByContributor($user_id) {
+    public static function PostsByContributor($user_id) {
 
         $list = [];
         $db = Db::getInstance();
@@ -74,11 +78,10 @@ where post.user_id = :user_id; ');
 //          foreach ($req->fetchAll() as $post) {
         $results = $req->fetchAll();
         foreach ($results as $result) {
-            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '',  $user_id,'');
+            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', $user_id, '');
         }
         return $list;
     }
-
 
     public static function find($id) {
         $db = Db::getInstance();
@@ -89,7 +92,7 @@ SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.nam
 FROM post
 INNER JOIN cuisine ON post.cuisine_id = cuisine.id
 WHERE post.id=:id; ');
-        
+
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
@@ -101,31 +104,29 @@ WHERE post.id=:id; ');
             throw new Exception('A real exception should go here');
         }
     }
-      public static function findComment($id) {
+
+    public static function findComment($id) {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
         $req = $db->prepare('
  SELECT * FROM comment inner join post where comment.post_id = :id  ORDER BY comment.id DESC limit 6; ');
-        
+
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'],$post['comment']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['comment']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
             throw new Exception('A real exception should go here');
         }
     }
-    
-    
-    
 
-   public static function PostsByCuisine($cuisine_id) {
+    public static function PostsByCuisine($cuisine_id) {
 
- $list = [];
+        $list = [];
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $cuisine_id = intval($cuisine_id);
@@ -133,15 +134,14 @@ WHERE post.id=:id; ');
 inner join post on post.cuisine_id = cuisine.id
 where post.cuisine_id =:cuisine_id;');
 
-      //the query was prepared, now replace :id with the actual $id value
+        //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('cuisine_id' => $cuisine_id));
 //          foreach ($req->fetchAll() as $post) {
         $results = $req->fetchAll();
         foreach ($results as $result) {
-             $list [] =new Post($result['post_id'], $result['title'], '',$result['image'], '', '','','',$cuisine_id);
-       
+            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', '', $cuisine_id);
         }
-         return $list;
+        return $list;
 //    $list = [];
 //        $db = Db::getInstance();
 //        $req = $db->query('SELECT * FROM post');
@@ -152,10 +152,7 @@ where post.cuisine_id =:cuisine_id;');
 //        return $list;
 //    }
 //        
-
-
-}
-
+    }
 
 //update by id
     public static function update($id) {
@@ -173,8 +170,8 @@ where post.cuisine_id =:cuisine_id;');
             $filteredContent = $_POST['content'];
         }
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
-         $random =uniqid('image');
-         
+        $random = uniqid('image');
+
         $title = $filteredTitle;
         $content = $filteredContent;
         $image = Post::updateFile($random);
@@ -186,12 +183,13 @@ where post.cuisine_id =:cuisine_id;');
 
     public static function add() {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into post(title, content, image,  DateAdded, cuisine_id) values (:title, :content, :image, :DateAdded, :cuisine_id)");
+        $req = $db->prepare("Insert into post(title, content, image,  DateAdded, cuisine_id, user_id) values  (:title, :content, :image, :DateAdded, :cuisine_id ,:user_id)");
         $req->bindParam(':title', $title);
         $req->bindParam(':content', $content);
         $req->bindParam(':image', $image);
         $req->bindParam(':cuisine_id', $cuisine_id);
         $req->bindParam(':DateAdded', $DateAdded);
+        $req->bindParam(':user_id', $user_id);
 
 
 // set parameters and execute
@@ -202,13 +200,14 @@ where post.cuisine_id =:cuisine_id;');
             $filteredContent = $_POST['content'];
         }
         $random = uniqid('image');
-        
+
 //        filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         $title = $filteredTitle;
         $content = $filteredContent;
         $image = Post::uploadFile($random);
         $DateAdded = Post::AddDate();
         $cuisine_id = $_POST['cuisine_id'];
+        $user_id = $_POST['user_id'];
         $req->execute();
 //upload post image
     }
@@ -257,8 +256,8 @@ where post.cuisine_id =:cuisine_id;');
 
     public static function updateFile(string $imageFileName) {
         if ($_FILES[self::InputKeys] == "") {
-            
-        return $imagePath;
+
+            return $imagePath;
         }
 
         if (empty($_FILES[self::InputKeys])) {
@@ -290,20 +289,18 @@ where post.cuisine_id =:cuisine_id;');
 
 
         try {
-        
+
             $db = Db::getInstance();
             //make sure $id is an integer
             $id = intval($id);
-           $req = $db->prepare('delete FROM post WHERE id = :id');
+            $req = $db->prepare('delete FROM post WHERE id = :id');
             // the query was prepared, now replace :id with the actual $id value
-                   $req->execute(array('id' => $id));
-
+            $req->execute(array('id' => $id));
         } catch (Exception $e) {
-       
-           call('pages', 'error');
+
+            call('pages', 'error');
             logException($e);
             die("");
-         
         }
 
         $db = Db::getInstance();
@@ -312,7 +309,6 @@ where post.cuisine_id =:cuisine_id;');
         $req = $db->prepare('delete FROM post WHERE id = :id');
         // the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-
     }
 
 }
