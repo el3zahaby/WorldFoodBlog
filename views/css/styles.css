@@ -1,9 +1,9 @@
 html, h1, h2, h3, h4, h5, h6 ,a,glyphicon{
-  font-family: "Comic Sans MS", cursive, sans-serif; 
-/*    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+    /*    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
 }
 .w3-tangerine {
-  font-family: 'Tangerine', serif;
+    font-family: 'Tangerine', serif;
 }
 .w3-pacifico {
     font-family: 'Pacifico', cursive;
@@ -30,7 +30,7 @@ a{
     color: black;
 }
 
-
+/*
 .footer {
     position: absolute;
 
@@ -39,7 +39,79 @@ a{
     background-color: #7F2989;
     color: white;
     text-align: center;
+}*/
+/*html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+#header {
+  background: #ededed;
+  padding: 10px;
+}
+#content {
+  padding-bottom: 100px;
+   Height of the footer element 
+}*/
+/*.footer {
+position:absolute;
+top:480px;
+left: 10px;
+}*/
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.demo {
+    margin: 0 auto;
+    padding-top: 64px;
+    max-width: 640px;
+    width: 94%;
+}
+
+.demo h1 {
+    margin-top: 0;
+}
+
+/**
+ * Footer Styles
+ */
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+
+    text-align: center;
+    
+    
+    background-color: #7F2989;
+    color: white;
+
+}
+
 .footer a{
 
     color: white;

@@ -3,10 +3,13 @@
     div.a {
         
     }
-    div.container{
-        margin: 10px;
-
-    }
+   .container
+{
+    min-height: 100%;
+    min-height: -webkit-calc(100% - 186px);
+    min-height: -moz-calc(100% - 186px);
+    min-height: calc(100% - 186px);
+}
 
     .like, .dislike {
         display: inline-block;
