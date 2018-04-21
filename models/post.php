@@ -58,7 +58,27 @@ ORDER BY post.id DESC LIMIT 6 ;');
         }
         return $list;
     }
-   
+
+           public static function PostsByContributor($user_id) {
+
+        $list = [];
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $user_id = intval($user_id);
+        $req = $db->prepare('SELECT  post.image as image ,post.title as title, post.id as post_id FROM `username` 
+inner join post on post.user_id = username.id
+where post.user_id = :user_id; ');
+
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('user_id' => $user_id));
+//          foreach ($req->fetchAll() as $post) {
+        $results = $req->fetchAll();
+        foreach ($results as $result) {
+            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '',  $user_id,'');
+        }
+        return $list;
+    }
+
 
     public static function find($id) {
         $db = Db::getInstance();
