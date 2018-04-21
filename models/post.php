@@ -92,16 +92,17 @@ where post.user_id = :user_id; ');
         //use intval to make sure $id is an integer
         $id = intval($id);
         $req = $db->prepare('
-SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
+SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name , username.username
 FROM post
 INNER JOIN cuisine ON post.cuisine_id = cuisine.id
+inner join username on post.user_id = username.id
 WHERE post.id=:id; ');
 
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['username']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
