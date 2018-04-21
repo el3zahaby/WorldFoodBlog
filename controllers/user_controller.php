@@ -52,8 +52,8 @@ class UserController {
             require_once('index.php');
         }
 
-
-    public function logout() {
+ }
+    
 
 
 
