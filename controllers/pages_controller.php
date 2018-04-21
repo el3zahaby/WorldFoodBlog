@@ -16,5 +16,16 @@ class PagesController {
     public function error() {
       require_once('views/pages/error.php');
     }
-    
-}
+ public function ContactUs() {
+
+require_once('views/pages/Contactus.php'); 
+      
+
+    }
+        public function AboutUs() {
+
+{ require_once('views/pages/AboutUs.php'); 
+      
+
+    }   
+}}
