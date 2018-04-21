@@ -10,22 +10,16 @@ class User {
     public $create_date;
     public $image;
 
-
-  
-    public function __construct($id, $username, $password, $email,  $create_date, $image ) {
-        $this->id    = $id;
+    public function __construct($id, $username, $password, $email, $create_date, $image) {
+        $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->create_date = $create_date;
         $this->image = $image;
-
-   
     }
-    
 
-        
-   public static function all() {
+    public static function all() {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM username');
@@ -35,8 +29,6 @@ class User {
         }
         return $list;
     }
-       
-
 
     public static function allusers() {
         $list = [];
@@ -45,36 +37,50 @@ class User {
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $user) {
 
-            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['create_date'], $user['image'] );
+            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['create_date'], $user['image']);
         }
         return $list;
     }
 
-
     public static function add() {
         $db = Db::getInstance();
 //$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
-        $req->bindParam(':username', $username);
-        $req->bindParam(':email', $email);
-        $req->bindParam(':password', $password);
-// set parameters and execute
-        if (isset($_POST['username']) && $_POST['username'] != "") {
-            $filteredUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        if (isset($_POST['email']) && $_POST['email'] != "") {
-            $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-//        if (isset($_POST['password']) && $_POST['password'] != "") {
-//            $filteredPassword = filter_input(INPUT_POST, 'password');
-//        }
-        $password = $_POST['password'];
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sqlquery = "SELECT username, password from username WHERE username=:username";
+        $querystring = $db->prepare($sqlquery);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $querystring->execute(
+                array(
+                    'username' => $_POST["username"])
+        );
 
-        $username = $filteredUsername;
-        $email = $filteredEmail;
-        $password = $hashed_password;
-        $req->execute();
+        $count = $querystring->rowCount();
+
+        if ($count > 0) {
+            echo "
+             <div class='container'> <div id='logo' class='text-center'> 
+                        <h4>Sorry! This username already exists</h4><p></p>
+                    </div></div>";
+        } else {
+            $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
+            $req->bindParam(':username', $username);
+            $req->bindParam(':email', $email);
+            $req->bindParam(':password', $password);
+// set parameters and execute
+            if (isset($_POST['username']) && $_POST['username'] != "") {
+                $filteredUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+            if (isset($_POST['email']) && $_POST['email'] != "") {
+                $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+
+            $password = $_POST['password'];
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $username = $filteredUsername;
+            $email = $filteredEmail;
+            $password = $hashed_password;
+            $req->execute();
+        }
     }
 
     public static function login() {
@@ -105,17 +111,15 @@ class User {
                     $_SESSION["username"] = $username;
                     header("location:index.php");
                 } else {
-                    echo 'invalid username or password';
+                    echo ' <div class="container"> <div id="logo" class="text-center"> 
+                        <h2>invalid username or password!</h2><p></p>
+                    </div></div>';
                 }
             } else {
                 echo '
-       <div  style="margin-top: 2%;">
-        <div class="container">
-            <div class="col-md-6 col-md-offset-3">  
-                <div class="row">
-                    <div id="logo" class="text-center">
+        <div class="container"> <div id="logo" class="text-center"> 
                         <h2>Whoops, you are not registered yet!</h2><p></p>
-                    </div> </div> </div></div>';
+                    </div></div>';
             }
         }
     }
@@ -125,8 +129,7 @@ class User {
         session_destroy();
     }
 
-
-  public static function find($id) {
+    public static function find($id) {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
@@ -137,16 +140,13 @@ where id =:id;');
         $req->execute(array('id' => $id));
         $result = $req->fetch();
         if ($result) {
-            return new User($result['id'], $result['username'],'','', $result['create_date'], $result['image']);
+            return new User($result['id'], $result['username'], '', '', $result['create_date'], $result['image']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
             throw new Exception('A real exception should go here');
         }
     }
-
-    
-    
 
 //update by id
     public static function update($id) {
@@ -172,8 +172,5 @@ where id =:id;');
             return "null";
         }
     }
-    
-
 
 }
-

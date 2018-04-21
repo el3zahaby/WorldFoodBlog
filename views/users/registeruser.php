@@ -33,14 +33,14 @@
             ?>
             <div class="form-group">
 
-            <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php if(isset($error)){echo $username;}?>" />
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" required value="<?php if(isset($error)){echo $username;}?>" />
             </div>
             <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Enter E-Mail" value="<?php if(isset($error)){echo $email;}?>" />
+            <input type="text" class="form-control" name="email" placeholder="Enter E-Mail" required value="<?php if(isset($error)){echo $email;}?>" />
 
             </div>
             <div class="form-group">
-             <input type="password" class="form-control" name="password" placeholder="Enter Password" />
+             <input type="password" class="form-control" name="password"required  placeholder="Enter Password" />
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
