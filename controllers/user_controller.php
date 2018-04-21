@@ -66,6 +66,11 @@ public function logout() {
               header("location:index.php");
 
 }
+   
+public function userAccount() {
+    require_once('views/users/userAccount.php');
+           
+}
 
     
  public function displayallusers() {
