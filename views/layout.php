@@ -72,8 +72,9 @@
     <div class="w3-container w3-pink">
         <?php require_once('routes.php'); ?>
         </<div>
-            <div class="w3-container w3-gray">
+          
                 <div class="footer">
+                    
                     Copyright &COPY; <?= date('Y'); ?> || Follow us on our social media accounts:
                     <a href="#" class="fb-ic mr-3"><i class="fa fa-lg fa-facebook"> </i></a>
                     <!--Twitter-->
@@ -86,11 +87,8 @@
 
                     <!--Youtube-->
                     <a href="#" class="yt-ic mr-3"><i class="fa fa-lg fa-youtube"> </i></a>
-
-                </div>
-                <script>
-
-                </script>
+                     </div>
+            
 
                 </body>
                 </html>
