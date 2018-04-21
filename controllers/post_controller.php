@@ -29,6 +29,7 @@ class PostController {
             if (isset($_POST['submit'])) {
 
                 Comment::addComment();
+              require_once('index.php');
               
         
             }

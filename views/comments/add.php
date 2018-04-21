@@ -37,16 +37,16 @@
                     <input type="hidden" class="hi" name="post_id" value="<?php echo $post->id;?>">
 
                     <label for="exampleFormControlInput1">Name </label>
-                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="your name here">
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" required placeholder="your name here">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" required placeholder="name@example.com">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Comment</label>
-                    <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="comment" class="form-control" id="exampleFormControlTextarea1"required   rows="3"></textarea>
                 </div>
                 <button name='submit' type='submit'> Comment </button>
             </form>
