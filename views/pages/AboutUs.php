@@ -7,6 +7,7 @@
 
     <body>
         <style> img{margin-bottom: 20px ; }</style>
+        
         <div style="text-align:center">
 
 
@@ -23,7 +24,7 @@
             </p>
 
             <div class="container">
-                <a href= '/WorldFoodBlog'>  <img class="center" src="views/images/WFBlogTeam.png" alt="" width='250' height='200'/></a>
+                <a href= '/WorldFoodBlog'>  <img class="center" src="views/images/WFBlogTeam.png" alt="" width='300' height='200'/></a>
             </div>
         </div>
     </body>
