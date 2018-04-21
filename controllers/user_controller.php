@@ -1,6 +1,7 @@
 <?php
 
 require 'models/user.php';
+require 'models/post.php';
 
 class UserController {
 
