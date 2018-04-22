@@ -13,14 +13,16 @@ class Post {
     public $image;
     public $DateAdded;
     public $cuisine_id;
+    public $user_id;
 
-    public function __construct($id, $title, $content, $image, $DateAdded, $cuisine_id) {
+    public function __construct($id, $title, $content, $image, $DateAdded, $cuisine_id, $user_id) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->image = $image;
         $this->DateAdded = $DateAdded;
         $this->cuisine_id = $cuisine_id;
+        $this->user_id = $user_id;
     }
 
 //    Static belongs to the general class not to instance
@@ -30,7 +32,7 @@ class Post {
         $req = $db->query('SELECT * FROM post');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id'],$post['user_id']);
         }
         return $list;
     }
@@ -38,13 +40,15 @@ class Post {
     public static function PopularPosts() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
-inner join cuisine on post.cuisine_id = cuisine.id
+        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name, username.username FROM post 
 
-ORDER BY post.id ASC LIMIT 6 ;');
+inner join cuisine on post.cuisine_id = cuisine.id
+inner join username on post.user_id = username.id
+
+ORDER BY post.id ASC LIMIT 6;');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['username']);
         }
         return $list;
     }
@@ -52,13 +56,13 @@ ORDER BY post.id ASC LIMIT 6 ;');
     public static function RecentPosts() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name FROM post 
+        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name , username.username FROM post 
 inner join cuisine on post.cuisine_id = cuisine.id
-
+inner join username on post.user_id = username.id
 ORDER BY post.id DESC LIMIT 6 ;');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'],$post['username']);
         }
         return $list;
     }
@@ -88,16 +92,17 @@ where post.user_id = :user_id; ');
         //use intval to make sure $id is an integer
         $id = intval($id);
         $req = $db->prepare('
-SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name
+SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name , username.username
 FROM post
 INNER JOIN cuisine ON post.cuisine_id = cuisine.id
+inner join username on post.user_id = username.id
 WHERE post.id=:id; ');
 
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['username']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found

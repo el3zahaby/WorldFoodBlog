@@ -45,27 +45,42 @@ class User {
     public static function add() {
         $db = Db::getInstance();
 //$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
-        $req->bindParam(':username', $username);
-        $req->bindParam(':email', $email);
-        $req->bindParam(':password', $password);
-// set parameters and execute
-        if (isset($_POST['username']) && $_POST['username'] != "") {
-            $filteredUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        if (isset($_POST['email']) && $_POST['email'] != "") {
-            $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-//        if (isset($_POST['password']) && $_POST['password'] != "") {
-//            $filteredPassword = filter_input(INPUT_POST, 'password');
-//        }
-        $password = $_POST['password'];
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sqlquery = "SELECT username, password from username WHERE username=:username";
+        $querystring = $db->prepare($sqlquery);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $querystring->execute(
+                array(
+                    'username' => $_POST["username"])
+        );
 
-        $username = $filteredUsername;
-        $email = $filteredEmail;
-        $password = $hashed_password;
-        $req->execute();
+        $count = $querystring->rowCount();
+
+        if ($count > 0) {
+            echo "
+             <div class='container'> <div id='logo' class='text-center'> 
+                        <h4>Sorry! This username already exists</h4><p></p>
+                    </div></div>";
+        } else {
+            $req = $db->prepare("Insert into username(username, email, password) values (:username, :email, :password)");
+            $req->bindParam(':username', $username);
+            $req->bindParam(':email', $email);
+            $req->bindParam(':password', $password);
+// set parameters and execute
+            if (isset($_POST['username']) && $_POST['username'] != "") {
+                $filteredUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+            if (isset($_POST['email']) && $_POST['email'] != "") {
+                $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+
+            $password = $_POST['password'];
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $username = $filteredUsername;
+            $email = $filteredEmail;
+            $password = $hashed_password;
+            $req->execute();
+        }
     }
 
     public static function login() {
@@ -97,17 +112,15 @@ class User {
                     $_SESSION["id"]=$result ['id'];
                     header("location:index.php");
                 } else {
-                    echo 'invalid username or password';
+                    echo ' <div class="container"> <div id="logo" class="text-center"> 
+                        <h2>invalid username or password!</h2><p></p>
+                    </div></div>';
                 }
             } else {
                 echo '
-       <div  style="margin-top: 2%;">
-        <div class="container">
-            <div class="col-md-6 col-md-offset-3">  
-                <div class="row">
-                    <div id="logo" class="text-center">
+        <div class="container"> <div id="logo" class="text-center"> 
                         <h2>Whoops, you are not registered yet!</h2><p></p>
-                    </div> </div> </div></div>';
+                    </div></div>';
             }
         }
     }

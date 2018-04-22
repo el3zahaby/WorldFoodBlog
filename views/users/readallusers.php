@@ -20,7 +20,7 @@
       
         <?php
         foreach ($users as $user) {?>
-      <div class='floating-box'> <h4><?php echo $user->username ?>  </h4><a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?> width='160' height='140' > </a> </div>
+      <div class='floating-box'> <h4><?php echo $user->username ?>  </h4><a href= '?controller=user&action=read&id=<?php echo $user->id ?>'> <img src= <?php echo $user->image?> width='150' height='140' > </a> </div>
      <?php   } ?>
       
     </div>
