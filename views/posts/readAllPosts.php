@@ -12,10 +12,13 @@
                 font-family: "Comic Sans MS", cursive, sans-serif; 
             }
 
-        </style>
-        <div  class = "container" > <div class="col-md-7"> 
+
+</style>
+        </style
+      <div class="col-md-7">            <div  class = "container" >    <div style="overflow-x:auto;">
                 <h4>Here is a list of all posts:</h4></div>
-            <div claiss="container">
+  
+  
                 <table class="RecipesTable">
                     <tr>
 
@@ -47,7 +50,7 @@
                             document.getElementById("demo").innerHTML = txt;
                         }
                     </script>
-                    </tr> </table>
+                    </tr> </table></div>
             </div>
     </body>
 
