@@ -103,7 +103,21 @@ public function userAccount() {
       
     }
  
+public function addImage(){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+          
+        
 
+            require_once('views/users/userAccount.php');
+        }
+        else {
+           
+            User::addImage();
+
+         
+            require_once('index.php');
+        }
+}
 
 
 }

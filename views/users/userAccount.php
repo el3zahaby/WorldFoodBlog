@@ -55,6 +55,22 @@ button:hover, a:hover {
  </div>
  <p><button>Contact</button></p>
 </div>
+    
+    
+    
+    
+              <div>
+             <form id="get-data-form" method="POST"  class="w3-container" enctype="multipart/form-data">
+   <input type="hidden" 
+               name="MAX_FILE_SIZE" 
+               value="10000000"
+               />
+        <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" required /> <br>
+               <input type="hidden" class="hi" name="id" value="<?php echo $_SESSION['id'];?>">
+            <input type="submit" value="Upload image">
+            </form>
+
+            </div>
 
 </body>
 </html>
