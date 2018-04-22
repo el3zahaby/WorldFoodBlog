@@ -67,10 +67,10 @@ public function logout() {
 
 }
    
-public function userAccount() {
-    require_once('views/users/userAccount.php');
-           
-}
+//public function userAccount() {
+//    require_once('views/users/userAccount.php');
+//           
+//}
 
     
  public function displayallusers() {
@@ -103,18 +103,15 @@ public function userAccount() {
       
     }
  
-public function addImage(){
+public function userAccount(){
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-          
-        
-
+             $user = User::find($_SESSION['id']);
             require_once('views/users/userAccount.php');
         }
         else {
            
             User::addImage();
 
-         
             require_once('index.php');
         }
 }
