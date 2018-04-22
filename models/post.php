@@ -307,25 +307,33 @@ where post.cuisine_id =:cuisine_id;');
     }
 
     public static function searchPost() {
+  
+            $list = [];
+              $search = $_POST['search'];
+            $db = Db::getInstance();
+           
+            $req = $db->prepare("SELECT * FROM post WHERE title LIKE '%$search%';");
+            $req->execute();
+            
+            $rows = $req->rowCount();
+            
+            if ($rows > 0) {
+                $results = $req->fetchAll();
+                foreach ($results as $result) {
+                    $list [] = new Post($result['id'], $result['title'], '', $result['image'], '', '', '', '', $result['cuisine_id']);
+                }
+                return $list;
+            } else {
+                echo "  <div class='container'> <div id='logo' class='text-cente'> 
+                        <h2>0 results found!</h2><p></p>
+                    </div></div>'"  ." <div class='container'> <h4> Continue searching</h4>
 
-
-
-        $list = [];
-        $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $cuisine_id = intval($cuisine_id);
-        $req = $db->prepare('SELECT * FROM post WHERE title LIKE '%$search%';');
-
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('cuisine_id' => $cuisine_id));
-//          foreach ($req->fetchAll() as $post) {
-        $results = $req->fetchAll();
-        foreach ($results as $result) {
-            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', '', $cuisine_id);
+        <form class='searchbar'method='POST'>
+            <input type='text' placeholder='Search..'required name='search'>
+            <button type='submit'> <i class='fa fa-search'></i></button>
+        </form> </div>";  exit();
+            }
         }
-        return $list;
     }
 
-}
 
-?>
