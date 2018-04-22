@@ -22,7 +22,7 @@
 
                     <?php foreach ($users as $user) { ?>
                     <tr>    <td> 
-                            <img src= <?php echo $user->image  ?> width='300' height='230'>   </td>  </a> <td> <?php echo $user->username ?></td> 
+                            <img src= <?php echo $user->image  ?> width='300' height='230'>   </td>  </a> <td> <?php echo $user->username ?>  has been a member of this blog since <?php echo $user->create_date ?></td> 
 <?php } ?>
 
                     </tr> </table></div> </div>
