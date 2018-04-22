@@ -30,39 +30,7 @@ a{
     color: black;
 }
 
-/*
-.footer {
-    position: absolute;
 
-
-    width: 100%;
-    background-color: #7F2989;
-    color: white;
-    text-align: center;
-}*/
-/*html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-#wrapper {
-  min-height: 100%;
-  position: relative;
-}
-#header {
-  background: #ededed;
-  padding: 10px;
-}
-#content {
-  padding-bottom: 100px;
-   Height of the footer element 
-}*/
-/*.footer {
-position:absolute;
-top:480px;
-left: 10px;
-}*/
 html {
     height: 100%;
     box-sizing: border-box;

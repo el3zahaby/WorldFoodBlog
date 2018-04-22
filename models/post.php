@@ -32,7 +32,7 @@ class Post {
         $req = $db->query('SELECT * FROM post');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id'],$post['user_id']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id'], $post['user_id']);
         }
         return $list;
     }
@@ -62,7 +62,7 @@ inner join username on post.user_id = username.id
 ORDER BY post.id DESC LIMIT 6 ;');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'],$post['username']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['username']);
         }
         return $list;
     }
@@ -147,16 +147,6 @@ where post.cuisine_id =:cuisine_id;');
             $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', '', $cuisine_id);
         }
         return $list;
-//    $list = [];
-//        $db = Db::getInstance();
-//        $req = $db->query('SELECT * FROM post');
-//        // we create a list of Post objects from the database results
-//        foreach ($req->fetchAll() as $post) {
-//            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
-//        }
-//        return $list;
-//    }
-//        
     }
 
 //update by id
@@ -314,6 +304,26 @@ where post.cuisine_id =:cuisine_id;');
         $req = $db->prepare('delete FROM post WHERE id = :id');
         // the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
+    }
+
+    public static function searchPost() {
+
+
+
+        $list = [];
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $cuisine_id = intval($cuisine_id);
+        $req = $db->prepare('SELECT * FROM post WHERE title LIKE '%$search%';');
+
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('cuisine_id' => $cuisine_id));
+//          foreach ($req->fetchAll() as $post) {
+        $results = $req->fetchAll();
+        foreach ($results as $result) {
+            $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', '', $cuisine_id);
+        }
+        return $list;
     }
 
 }
