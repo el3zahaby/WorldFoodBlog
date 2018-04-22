@@ -103,7 +103,19 @@ public function userAccount() {
       
     }
  
+ 
+public function userAccount(){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+             $user = User::find($_SESSION['id']);
+            require_once('views/users/userAccount.php');
+        }
+        else {
+           
+            User::addImage();
 
+            require_once('index.php');
+        }
+}
 
 
 }
