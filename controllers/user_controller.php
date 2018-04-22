@@ -102,6 +102,17 @@ public function userAccount() {
       }
       
     }
+    public function userProfilePage(){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+             $user = User::find($_SESSION['id']);
+            require_once('views/users/userProfilePage.php');
+        }
+          
+
+            require_once('views/user/displayallusers.php');
+        }
+}
+
  
 
 
