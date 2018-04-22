@@ -4,7 +4,12 @@
         <meta charset="UTF-8">
         <title>About Us Page</title>
     </head>
-
+    <style>
+       p{
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+    /*    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+}
+    </style>
     <body>
         <style> img{margin-bottom: 20px ; }</style>
         

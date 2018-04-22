@@ -116,3 +116,22 @@ body {
 
     color: white;
 }
+
+.results {
+   margin:100px;
+}
+
+.RecipesTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1px;
+    float: left;
+}
+.RecipesTable th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.RecipesTable tr:hover {
+    background-color:#F6F0F7;
+}

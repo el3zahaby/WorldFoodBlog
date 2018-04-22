@@ -44,7 +44,7 @@
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-             <button type="submit" class="btn btn-block btn-primary">
+             <button type="submit" class="btn btn-default">
                  <i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
                 </button>
             </div>
