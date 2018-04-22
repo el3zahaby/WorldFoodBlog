@@ -30,7 +30,8 @@ function call($controller, $action) {
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error', 'Contactus', 'AboutUs', 'search'],
     
-       'user' => ['register', 'login', 'logout', 'userAccount' ,'read', 'readallusers','displayallusers', 'update'],
+           'user' => ['register', 'login', 'logout', 'userAccount' ,'read', 'readallusers','displayallusers', 'update'],
+   
     'post' => ['readAllPosts',  'read', 'create', 'delete', 'update'],
     
     'cuisine' => ['readCuisine', 'readAllCuisines'],
