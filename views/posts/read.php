@@ -53,8 +53,9 @@
 
 
                 <p>Cuisine: <?php echo $post->cuisine_id; ?></p>
-
+                 <p>By: <?php echo $post->user_id; ?></p>
                 <p><?php echo $post->content; ?></p>
+
 
 
 

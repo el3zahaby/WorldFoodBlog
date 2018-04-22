@@ -32,7 +32,7 @@ class Post {
         $req = $db->query('SELECT * FROM post');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id'],$post['user_id']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id'], $post['user_id']);
         }
         return $list;
     }
@@ -62,7 +62,7 @@ inner join username on post.user_id = username.id
 ORDER BY post.id DESC LIMIT 6 ;');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'],$post['username']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['username']);
         }
         return $list;
     }
@@ -147,16 +147,6 @@ where post.cuisine_id =:cuisine_id;');
             $list [] = new Post($result['post_id'], $result['title'], '', $result['image'], '', '', '', '', $cuisine_id);
         }
         return $list;
-//    $list = [];
-//        $db = Db::getInstance();
-//        $req = $db->query('SELECT * FROM post');
-//        // we create a list of Post objects from the database results
-//        foreach ($req->fetchAll() as $post) {
-//            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['cuisine_id']);
-//        }
-//        return $list;
-//    }
-//        
     }
 
 //update by id
@@ -316,6 +306,34 @@ where post.cuisine_id =:cuisine_id;');
         $req->execute(array('id' => $id));
     }
 
-}
+    public static function searchPost() {
+  
+            $list = [];
+              $search = $_POST['search'];
+            $db = Db::getInstance();
+           
+            $req = $db->prepare("SELECT * FROM post WHERE title LIKE '%$search%';");
+            $req->execute();
+            
+            $rows = $req->rowCount();
+            
+            if ($rows > 0) {
+                $results = $req->fetchAll();
+                foreach ($results as $result) {
+                    $list [] = new Post($result['id'], $result['title'], '', $result['image'], '', '', '', '', $result['cuisine_id']);
+                }
+                return $list;
+            } else {
+                echo "  <div class='container'> <div id='logo' class='text-cente'> 
+                        <h2>0 results found!</h2><p></p>
+                    </div></div>'"  ." <div class='container'> <h4> Continue searching</h4>
 
-?>
+        <form class='searchbar'method='POST'>
+            <input type='text' placeholder='Search..'required name='search'>
+            <button type='submit'> <i class='fa fa-search'></i></button>
+        </form> </div>";  exit();
+            }
+        }
+    }
+
+

@@ -12,8 +12,7 @@ class PostController {
     }
 
     public function read() {
-        // we expect a url of form ?controller=posts&action=show&id=x
-        // without an id we just redirect to the error page as we need the post id to find it in the database
+
         if (isset($_GET['id'])) {
 
             // we use the given id to get the correct post
@@ -29,9 +28,7 @@ class PostController {
             if (isset($_POST['submit'])) {
 
                 Comment::addComment();
-              require_once('index.php');
-              
-        
+                require_once('index.php');
             }
         }
     }
