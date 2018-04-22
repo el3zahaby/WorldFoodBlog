@@ -174,4 +174,52 @@ where id =:id;');
         }
     }
 
+
+ public static function addImage() {
+        $db = Db::getInstance();
+         $req = $db->prepare("Update username set image=:image where id=:id");
+        $req->bindParam(':id', $id);
+        $req->bindParam(':image', $image);
+
+        $random = uniqid('image');
+
+        $id = $_POST['id'];
+        $image = User::updateFile($random);
+        $req->execute();
+      
+    }
+
+  const AllowedTypess = ['image/jpeg', 'image/jpg', ''];
+    const InputKeys = 'image';
+
+    public static function updateFile(string $imageFileName) {
+        if ($_FILES[self::InputKeys] == "") {
+
+            return $imagePath;
+        }
+
+        if (empty($_FILES[self::InputKeys])) {
+            //die("File Missing!");
+            trigger_error("Please upload an image for this post");
+        }
+//        if ($_FILES[self::InputKeys]['error'] > 0) {
+//            trigger_error("Handle the error! " . $_FILES[InputKey]['error']);
+//        }
+        if (!in_array($_FILES[self::InputKeys]['type'], self::AllowedTypess)) {
+            trigger_error("This File Type Not Allowed: " . $_FILES[self::InputKeys]['type']);
+        }
+        $tempFile = $_FILES[self::InputKeys]['tmp_name'];
+        $path = "/Applications/XAMPP/xamppfiles/htdocs/WorldFoodBlog/uploads/";
+        $destinationFile = $path . $imageFileName . '.jpeg';
+        $imagePath = "uploads/" . $imageFileName . '.jpeg';
+        if (!move_uploaded_file($tempFile, $destinationFile)) {
+//            trigger_error("Handle Error");
+            return $imagePath;
+        }
+        //Clean up the temp file
+        if (file_exists($tempFile)) {
+            unlink($tempFile);
+        }
+        return $imagePath;
+    }
 }
