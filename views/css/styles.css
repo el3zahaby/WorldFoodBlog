@@ -118,13 +118,13 @@ body {
 }
 
 .results {
-   margin:20px;
+   margin:100px;
 }
 
 .RecipesTable {
     border-collapse: collapse;
-    width: 60%;
-    margin: 30px;
+    width: 100%;
+    margin: 1px;
     float: left;
 }
 .RecipesTable th, td {

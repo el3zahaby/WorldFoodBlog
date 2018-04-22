@@ -1,28 +1,33 @@
 
-    <html>  <style>
-   img {
-  border-radius: 50%;
+<html>  <style>
+        img {
+            border-radius: 50%;
 
-        width: 50px;
-    height: 50px;
-}
+            width: 70px;
+            height: 70px;
+        }
 
-        
+
 
 
 
     </style>
-    <div class="container">
-      <h2>All Contributors</h2>
-        <?php
-//            <a class="btn btn-secondary active" href='?controller=post&action=update&id=<?php echo $post->id; 
 
-        foreach ($users as $user) {?>
-      <div class='floating-box'>  <img src= <?php echo $user->image?>   width='290' height='200'>   </a><?php echo $user->username ?> </div>
-     <?php   } ?>
-      
-    </div>
+       <div  class = "container" >       <div class="col-md-8">      <div style="overflow-x:auto;">
+                <h4>All blog members </h4>
 
+
+            <table class="RecipesTable">
+                <tr>
+
+                    <?php foreach ($users as $user) { ?>
+                    <tr>    <td> 
+                            <img src= <?php echo $user->image  ?> width='300' height='230'>   </td>  </a> <td> <?php echo $user->username ?></td> 
+<?php } ?>
+
+                    </tr> </table></div> </div>
+    </div> 
+</div>
 
 
 </html>
