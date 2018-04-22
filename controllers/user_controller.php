@@ -107,6 +107,7 @@ public function userAccount() {
              $user = User::find($_SESSION['id']);
             require_once('views/users/userProfilePage.php');
         }
+        else {
           
 
             require_once('views/user/displayallusers.php');
