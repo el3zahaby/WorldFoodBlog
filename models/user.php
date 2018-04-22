@@ -10,22 +10,16 @@ class User {
     public $create_date;
     public $image;
 
-
-  
-    public function __construct($id, $username, $password, $email,  $create_date, $image ) {
-        $this->id    = $id;
+    public function __construct($id, $username, $password, $email, $create_date, $image) {
+        $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->create_date = $create_date;
         $this->image = $image;
-
-   
     }
-    
 
-        
-   public static function all() {
+    public static function all() {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM username');
@@ -35,8 +29,6 @@ class User {
         }
         return $list;
     }
-       
-
 
     public static function allusers() {
         $list = [];
@@ -45,11 +37,10 @@ class User {
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $user) {
 
-            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['create_date'], $user['image'] );
+            $list[] = new User($user['id'], $user['username'], $user['password'], $user['email'], $user['create_date'], $user['image']);
         }
         return $list;
     }
-
 
     public static function add() {
         $db = Db::getInstance();
@@ -80,7 +71,7 @@ class User {
     public static function login() {
         $db = Db::getInstance();
         if (isset($_POST['submit'])) {
-            $sqlquery = "SELECT username, password from username WHERE username=:username";
+            $sqlquery = "SELECT username, password , id from username WHERE username=:username";
             $querystring = $db->prepare($sqlquery);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -103,6 +94,7 @@ class User {
 
                     echo 'correct';
                     $_SESSION["username"] = $username;
+                    $_SESSION["id"]=$result ['id'];
                     header("location:index.php");
                 } else {
                     echo 'invalid username or password';
@@ -125,8 +117,7 @@ class User {
         session_destroy();
     }
 
-
-  public static function find($id) {
+    public static function find($id) {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
@@ -137,16 +128,13 @@ where id =:id;');
         $req->execute(array('id' => $id));
         $result = $req->fetch();
         if ($result) {
-            return new User($result['id'], $result['username'],'','', $result['create_date'], $result['image']);
+            return new User($result['id'], $result['username'], '', '', $result['create_date'], $result['image']);
         } else {
             //replace with a more meaningful exception
             //post with that id not found
             throw new Exception('A real exception should go here');
         }
     }
-
-    
-    
 
 //update by id
     public static function update($id) {
@@ -172,8 +160,5 @@ where id =:id;');
             return "null";
         }
     }
-    
-
 
 }
-

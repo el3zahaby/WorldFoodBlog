@@ -9,10 +9,7 @@
                 <label>Title</label>
                 <input type="text"  name="title" class="form-control" id="texteditor" placeholder="Post Title Here">
             </div>
-            <!--            <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Choose Cuisine
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu">-->
+      
             <label >Select cuisine</label>
             <select name="cuisine_id">
                 <?php
@@ -33,8 +30,7 @@
                value="10000000"
                />
         <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" required /> <br>
-        <div class="dropdown">
-
+               <input type="hidden" class="hi" name="user_id" value="<?php echo $_SESSION['id'];?>">
             <input type="submit" value="Create Post">
             </form>
 
@@ -58,4 +54,5 @@
             </script>
 
             </body>
-            </html>
+
+</html>
