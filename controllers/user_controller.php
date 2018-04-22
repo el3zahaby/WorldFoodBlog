@@ -67,10 +67,6 @@ public function logout() {
 
 }
    
-public function userAccount() {
-    require_once('views/users/userAccount.php');
-           
-}
 
     
  public function displayallusers() {
