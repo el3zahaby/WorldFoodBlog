@@ -17,7 +17,7 @@
         <h3>Contact Us </h3>   
         
        <div class="container">
-            <img class="center" src="views/images/WFBlogTeam.png" name="slide" alt="" width='250' height='200'/>
+            <img class="center" src="views/images/WFBlogTeam.png" name="slide" alt="" width='300' height='200'/>
  
            
            
