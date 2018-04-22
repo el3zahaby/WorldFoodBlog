@@ -20,7 +20,15 @@ if(isset($_POST['submit']))
 <title>Login : WorldFoodBlog</title>
 
 </head>
+
 <body>
+    <style>
+        .btn{
+         display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    </style>
 
     <div class="container">
      <div class="form-container">
@@ -37,14 +45,15 @@ if(isset($_POST['submit']))
             }
             ?>
             <div class="form-group">
-             <input type="text" class="form-control" name="username" placeholder="Username or E mail ID" required />
+             <input type="text" class="form-control" name="username" placeholder="Username" required />
             </div>
             <div class="form-group">
              <input type="password" class="form-control" name="password" placeholder="Your Password" required />
             </div>
             <div class="clearfix"></div><hr />
+        
             <div class="form-group">
-             <button type="submit" name="submit" class="btn btn-block btn-primary">
+             <button type="submit" name="submit" class="btn btn-default">
                  <i class="glyphicon glyphicon-log-in"></i>&nbsp;SIGN IN
                 </button>
             </div>
