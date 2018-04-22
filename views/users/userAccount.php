@@ -39,22 +39,40 @@ button:hover, a:hover {
 </head>
 <body>
 
-
+  <div class="container"> 
 
 <div class="card">
-    <h2 style="text-align:center">Cute Cat</h2>
-  <img src="uploads/cat.jpg" alt="Cat" style="width:100%">
-  <h1>Cat</h1>
-  <p class="title">I'm a cat!</p>
-  <p>Cat Kingdom</p>
+    <h2 style="text-align:center"><?php echo $user->username; ?> </h2>
+  <img src="<?php echo $user->image; ?> " alt="user" style="width:100%">
+  
+  <p class="title">Member since: <?php echo $user->create_date; ?></p>
+  
   <div style="margin: 24px 0;">
     <a href="#"><i class="fa fa-dribbble"></i></a> 
     <a href="#"><i class="fa fa-twitter"></i></a>  
     <a href="#"><i class="fa fa-linkedin"></i></a>  
     <a href="#"><i class="fa fa-facebook"></i></a> 
  </div>
- <p><button>Contact</button></p>
+ <p>Email:<?php echo $user->email; ?></p>
+ 
+            <p>Update your profile picture</p>
+             <form id="get-data-form" method="POST"  class="w3-container" enctype="multipart/form-data">
+   <input type="hidden" 
+               name="MAX_FILE_SIZE" 
+               value="10000000"
+               />
+        <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" required /> <br>
+               <input type="hidden" class="hi" name="id" value="<?php echo $_SESSION['id'];?>">
+            <input type="submit" value="Upload image">
+            </form>
 </div>
+    
+    
+    
+    
+    
+
+            </div>
 
 </body>
 </html>
