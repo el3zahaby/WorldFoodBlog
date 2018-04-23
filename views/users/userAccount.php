@@ -5,10 +5,10 @@
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
+  max-width: 30%;
+  margin-left: 300px;
   text-align: center;
-  margin-right:600px;
+ 
 
 }
 
