@@ -76,3 +76,8 @@ button:hover, a:hover {
 
 </body>
 </html>
+<!--SELECT post.title, count(*) AS TitleCount
+from post
+inner join comment on comment.id = post.id
+group by post.title
+order by TitleCount DESC-->
