@@ -36,7 +36,7 @@ class UserController {
         } else {
 
             User::add();
-            require_once('index.php');
+             require_once('index.php');
         }
 
 }

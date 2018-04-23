@@ -24,11 +24,11 @@
     font-size: 18px;
     font-weight: normal;
     margin-right: 14px;
-}</style>
+    
+}
+</style>
 
-    <a class="like"><i class="fa fa-thumbs-o-up"></i>  
- Like <input class="qty1" name="qty1" readonly="readonly" type="text" value="0" />
-</a>
+
 
         
 <form  method="POST" >
@@ -52,16 +52,7 @@
             </form>
 
 
-            <script>
-                $(function () {
-                    $(".like").click(function () {
-                        var input = $(this).find('.qty1');
-                        input.val(parseInt(input.val()) + 1);
-
-                    });
-                    
-                  
-            </script>
+         
    <h3>Comments</h3>
 
 
@@ -70,7 +61,7 @@
 
  
 <div class="media">
-  <img class="align-self-start mr-3" src='uploads/a.png ' width="50" height="50" alt="Generic placeholder image">
+  <img class="align-self-start mr-3" src='uploads/a.png ' width="50" height="50" alt="Generic placeholder image" style='width: 6%;'>
   <div class="media-body">
                 <div id="friend-bio">
                   <h5 class="mt-0"> Name: <?php echo $comment->name;?></h5>

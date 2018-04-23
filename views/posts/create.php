@@ -3,7 +3,7 @@
 
         <title>Create A Blog Post</title> </head>
     <body>
-
+    <div class ="container">
         <form id="get-data-form" method="POST"  class="w3-container" enctype="multipart/form-data">
             <div class="form-group">  
                 <label>Title</label>
@@ -19,7 +19,7 @@
                 ?>
             </select>
         </div>
-
+  <div class ="container">
         <label>Content</label>
 
         <textarea name= "content" class="tinymce" id="texteditor"></textarea>
@@ -32,7 +32,7 @@
         <input type="file" name="image" class="w3-btn w3-pink" id="texteditor" required /> <br>
                <input type="hidden" class="hi" name="user_id" value="<?php echo $_SESSION['id'];?>">
             <input type="submit" value="Create Post">
-            </form>
+            </form>  </div>
 
 
 
