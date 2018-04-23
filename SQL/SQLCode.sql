@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `php_mvc`
+-- Database: `php_mvc` 
 --
-CREATE DATABASE IF NOT EXISTS `php_mvc` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `php_mvc`;
+CREATE DATABASE IF NOT EXISTS `php_mvc` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci; 
+USE `php_mvc`; 
 
 -- --------------------------------------------------------
 
@@ -28,7 +28,7 @@ USE `php_mvc`;
 -- Table structure for table `product`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE `product` ( 
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `price` decimal(8,2) DEFAULT NULL
