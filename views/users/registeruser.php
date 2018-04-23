@@ -49,7 +49,7 @@
                         <input id="password1" onKeyUp="check_pass()" type="password" class="form-control" name="password"required  placeholder="Enter Password" />
                     </div>
                     <div class="form-group">
-                        <input  id="password2" onKeyUp="check_pass()" type="password2" name="confirm_password" class="form-control"required  placeholder="Confirm Password" />
+                        <input  id="password2" onKeyUp="check_pass()" type="password" name="confirm_password" class="form-control"required  placeholder="Confirm Password" />
                     </div>
                     <div class="clearfix"></div><hr />
                     <div class="form-group">

@@ -186,7 +186,7 @@ where id =:id;');
         $id = $_POST['id'];
         $image = User::updateFile($random);
         $req->execute();
-      
+     
     }
 
   const AllowedTypess = ['image/jpeg', 'image/jpg', ''];
