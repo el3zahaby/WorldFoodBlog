@@ -40,18 +40,32 @@ class Post {
     public static function PopularPosts() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT post.id, post.title,post.content, post.image, post.DateAdded, cuisine.name, username.username FROM post 
+        $req = $db->query('SELECT comment.post_id, count(*), post.title, post.image, cuisine.name, username.username
+from comment 
+inner join post on post.id= comment.post_id
+inner join cuisine on post.cuisine_id= cuisine.id
+inner join username on post.user_id= username.id
 
-inner join cuisine on post.cuisine_id = cuisine.id
-inner join username on post.user_id = username.id
 
-ORDER BY post.id ASC LIMIT 6;');
+group by comment.post_id
+order by count(*) DESC limit 6
+
+
+');
         // we create a list of Post objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['image'], $post['DateAdded'], $post['name'], $post['username']);
+            $list[] = new Post($post['post_id'], $post['title'], '', $post['image'], '' , $post['name'], $post['username']);
         }
         return $list;
     }
+//    SELECT comment.post_id, count(*) 
+//from comment 
+//group by post_id
+//order by count(*) DESC limit 6
+//
+
+
+
 
     public static function RecentPosts() {
         $list = [];
@@ -307,33 +321,33 @@ where post.cuisine_id =:cuisine_id;');
     }
 
     public static function searchPost() {
-  
-            $list = [];
-              $search = $_POST['search'];
-            $db = Db::getInstance();
-           
-            $req = $db->prepare("SELECT * FROM post WHERE title LIKE '%$search%';");
-            $req->execute();
-            
-            $rows = $req->rowCount();
-            
-            if ($rows > 0) {
-                $results = $req->fetchAll();
-                foreach ($results as $result) {
-                    $list [] = new Post($result['id'], $result['title'], '', $result['image'], '', '', '', '', $result['cuisine_id']);
-                }
-                return $list;
-            } else {
-                echo "  <div class='container'> <div id='logo' class='text-cente'> 
+
+        $list = [];
+        $search = $_POST['search'];
+        $db = Db::getInstance();
+
+        $req = $db->prepare("SELECT * FROM post WHERE title LIKE '%$search%';");
+        $req->execute();
+
+        $rows = $req->rowCount();
+
+        if ($rows > 0) {
+            $results = $req->fetchAll();
+            foreach ($results as $result) {
+                $list [] = new Post($result['id'], $result['title'], '', $result['image'], '', '', '', '', $result['cuisine_id']);
+            }
+            return $list;
+        } else {
+            echo "  <div class='container'> <div id='logo' class='text-cente'> 
                         <h2>0 results found!</h2><p></p>
-                    </div></div>'"  ." <div class='container'> <h4> Continue searching</h4>
+                    </div></div>'" . " <div class='container'> <h4> Continue searching</h4>
 
         <form class='searchbar'method='POST'>
             <input type='text' placeholder='Search..'required name='search'>
             <button type='submit'> <i class='fa fa-search'></i></button>
-        </form> </div>";  exit();
-            }
+        </form> </div>";
+            exit();
         }
     }
 
-
+}
