@@ -60,36 +60,12 @@
                     <br />
 <span id='message'></span>
                 </form>
-<!--                                <form name="formname">
-                Enter password, 4 characters or more:<br>
-                <input type="text" id="password1" onKeyUp="check_pass()"><br>
-                Confirm password:<br>
-                <input type="text" id="password2" onKeyUp="check_pass()"><br>
-                <input type="submit" value="Submit" id="submit" disabled>
-                
-                </form>-->
+
 
             </div>
         </div>
         <script>
-//            $('#password, #confirm_password').on('keyup', function validate() {
-//                if ($('#password').val() == $('#confirm_password').val()) {
-//                  
-//                    $('#message').html('Matching').css('color', 'green');
-//                  $('#submit').prop('disabled', true);
-//                   
-//                } else
-//                    $('#message').html('Not Matching').css('color', 'red');
-//                 
-//                   $('#submit').prop('disabled', false);
-//            });
-
-//            function validate() {
-//                isValid = (document.formname.password1.value == document.formname.password2.value)
-//                        && document.formname.password1.value.length > 3; // Add any additional validation here
-//                document.formname.submitbtn.disabled = !isValid;
-//
-//            }
+//         
             function check_pass() {
                 if (document.getElementById('password1').value ==
                         document.getElementById('password2').value) {
