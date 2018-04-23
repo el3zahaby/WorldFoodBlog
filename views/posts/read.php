@@ -108,9 +108,9 @@
             <h5>Share it on social media</h5>
 <div class='containrer'>
     <a class="twitter-share-button"
-       href="http://localhost:8080/WorldFoodBlog/index.php?controller=post&amp;amp;action=read&amp;amp;id=<?php echo $post->id; ?>"><
+       href=http://worldblog.blogpost.com/WorldFoodBlog/index.php?controller=post&amp;amp;action=read&amp;amp;id=<?php echo $post->id; ?>"><
       Tweet</a>
-            <div class="fb-like" data-href="http://localhost:8080/WorldFoodBlog/index.php?controller=post&amp;action=read&amp;id=76" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            <div class="fb-like" data-href="http://worldblog.blogpost.com/WorldFoodBlog/index.php?controller=post&amp;amp;action=read&amp;amp;id=<?php echo $post->id; ?>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 </div>      <h5>leave us a comment</h5>
             <?php require_once('views/comments/add.php'); ?>
 
