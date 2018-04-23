@@ -11,7 +11,7 @@
     <body>
         <div class="container">
             <div class="form-container">
-                <form method="post">
+                <form method="post"  name="formname">
                     <h2>World Food Blog:Sign up.</h2><hr />
                     <?php
                     if (isset($error)) {
@@ -22,9 +22,7 @@
                             </div>
                             <?php
                         }
-                    }
-// else if(isset($_GET['joined']))
-                    {
+                    } {
                         ?>
 
                         <?php
@@ -33,50 +31,43 @@
                     <div class="form-group">
 
                         <input type="text" class="form-control" name="username" placeholder="Enter Username" required value="<?php
-                        if (isset($error)) {
-                            echo $username;
-                        }
-                        ?>" />
+                    if (isset($error)) {
+                        echo $username;
+                    }
+                    ?>" />
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="email" placeholder="Enter E-Mail" required value="<?php
                         if (isset($error)) {
                             echo $email;
                         }
-                        ?>" />
+                    ?>" />
 
                     </div>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                     <div class="form-group">
-                        <input type="password" id="password" class="form-control" name="password"required  placeholder="Enter Password" />
+                        <input id="password1" onKeyUp="check_pass()" type="password" class="form-control" name="password"required  placeholder="Enter Password" />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="confirm_password" id="confirm_password" class="form-control"required  placeholder="Confirm Password" />
+                        <input  id="password2" onKeyUp="check_pass()" type="password2" name="confirm_password" class="form-control"required  placeholder="Confirm Password" />
                     </div>
-
-
-
-
-
-
-
                     <div class="clearfix"></div><hr />
                     <div class="form-group">
-<!--                        <button id= 'submit' type="submit" class="btn btn-default" >-->
+                        <button  type="submit" value="Submit" id="submit" disabled class="btn btn-default" >-->
                             <i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
                         </button>
                     </div>
                     <br />
-
+<span id='message'></span>
                 </form>
-                <form name="formname">
-                    Enter password, 4 characters or more:<br>
-                    <input type="text" id="password1" onKeyUp="check_pass()"><br>
-                    Confirm password:<br>
-                    <input type="text" id="password2" onKeyUp="check_pass()"><br>
-                    <input type="submit" value="Submit" id="submit" disabled>
-                    <span id='message'></span>
-                </form>
+<!--                                <form name="formname">
+                Enter password, 4 characters or more:<br>
+                <input type="text" id="password1" onKeyUp="check_pass()"><br>
+                Confirm password:<br>
+                <input type="text" id="password2" onKeyUp="check_pass()"><br>
+                <input type="submit" value="Submit" id="submit" disabled>
+                
+                </form>-->
 
             </div>
         </div>
@@ -99,17 +90,18 @@
 //                document.formname.submitbtn.disabled = !isValid;
 //
 //            }
-function check_pass() {
-    if (document.getElementById('password1').value ==
-            document.getElementById('password2').value) {
-        document.getElementById('submit').disabled = false;
+            function check_pass() {
+                if (document.getElementById('password1').value ==
+                        document.getElementById('password2').value) {
+                    document.getElementById('submit').disabled = false;
 
-                   $('#message').html('Matching').css('color', 'green');
-    } else {
-        document.getElementById('submit').disabled = true;
-                      $('#message').html('Not Matching').css('color', 'red');
-    }
-}
+                    $('#message').html('Matching').css('color', 'green');
+                } else {
+                    document.getElementById('submit').disabled = true;
+                     $('#message').html('Not Matching').css('color', 'red');
+
+                }
+            }
 
         </script>
 
